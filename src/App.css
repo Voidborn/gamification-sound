@@ -1,0 +1,153 @@
+* {
+  margin: 0px;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+}
+
+h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+/* SIDEBAR STYLES*/
+
+.sidebar {
+  /*sidebar properties*/
+  height: 100%;
+  width: 300px;
+  position:fixed;
+  top:0;
+  left:0;
+  background-color: #E0F7FA;
+  overflow-x: hidden;
+  margin: 0px;
+  padding-top: 0px;
+
+  /*flexbox stuff*/
+  display: flex;
+  flex-direction: column;
+}
+
+/* Points */
+.pointbubble {
+  display: flex;
+  justify-content: space-around;
+  margin:25px;
+}
+
+.points{
+  margin-top: 40px;
+  justify-content: center;
+  text-align: center;
+}
+
+.point-number{
+  font-size: 600%;
+}
+
+.point-text{
+  margin-top: -30px;
+  font-size: 300%;
+}
+
+.overlay {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+/* Progress bar */
+.progress{
+  margin: 25px;
+}
+
+.progress-bar{
+  background-color: white;
+  border-radius: 10px;
+  height:20 px;
+  margin-top: 5px;
+}
+
+.progress-text{
+  text-align: center;
+}
+
+.progress-done{
+  background-color: #FFC107;
+  box-shadow: 0 2px 5px #5540008c;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:100%;
+  width:50%;
+}
+
+/* Point history */
+.history {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 25px;
+}
+
+.history-element{
+  display: flex;
+  justify-content: space-around;
+}
+
+.image-rating{
+  margin-left: 300px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.image-container{
+  margin-top:75px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.image-overlay{
+  width: 300px;
+  height: 400px;
+  justify-content: space-evenly;
+}
+
+.grid-row{
+  display:flex;
+  flex-flow: wrap;
+  flex-direction:row;
+  justify-content: space-evenly;
+}
+
+.cell{
+  width:100px;
+  height:100px;
+}
+
+.btn{
+  width:400px;
+  height:100px;
+  background-color:#FFC107;
+  border-radius: 20px;
+}
+
+
+.btn:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: scaleX(1.1) scaleY(1.1);
+}
