@@ -23,6 +23,7 @@ class Imagegrid extends React.Component<IProps,ImageState> {
 
     markImage(index: number): void {
         let newMarked = this.state.marked.slice();
+        
         newMarked[index] = !newMarked[index];
         console.log(this.state.marked)
         this.setState({
@@ -40,8 +41,6 @@ class Imagegrid extends React.Component<IProps,ImageState> {
                     <div className="overlay image-overlay">
                         <div className="grid-row">
                             {this.state.points.map((i, index) =>
-                                
-
                                 <img
                                     className="cell"
                                     key={index}
