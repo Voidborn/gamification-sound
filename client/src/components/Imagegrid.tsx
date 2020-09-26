@@ -1,5 +1,6 @@
 import React from 'react';
 
+import hello from "../api/api"
 
 interface IProps{
 
@@ -53,7 +54,7 @@ class Imagegrid extends React.Component<IProps,ImageState> {
                     </div>     
                 </div> 
                 <div className="image-container">
-                    <button className="btn"><h1>NEXT IMAGE</h1></button>
+                    <button className="btn" onClick={(event) => hello()}><h1>NEXT IMAGE</h1></button>
                 </div>
             </div>
         )
