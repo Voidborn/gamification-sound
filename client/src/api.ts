@@ -1,10 +1,8 @@
-import { userInterface } from '../interfaces/userInterface'
+import { userInterface } from './interfaces/userInterface'
 
 const baseUrl = "http://localhost:8080/";
 
-export async function register(prolific?: string): Promise<userInterface>{
-
-    
+export async function register(prolific?: string): Promise<userInterface>{    
     let prolificId = "";
     if (prolific) {
         prolificId = ":" + prolific;
@@ -19,5 +17,7 @@ export async function register(prolific?: string): Promise<userInterface>{
     
     return(user)
 }
+
+
 
 export default register

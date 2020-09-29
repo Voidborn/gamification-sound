@@ -4,8 +4,7 @@ import './App.css';
 import Sidebar from './components/Sidebar';
 import Imagegrid from './components/Imagegrid';
 import { userInterface } from './interfaces/userInterface';
-
-import register from './api/api';
+import Start from './components/Start'
 
 class App extends React.Component {
   constructor(props: userInterface) {
@@ -16,24 +15,24 @@ class App extends React.Component {
       prolificId: "",
       progress: 0
     }
+
+    this.updateState = this.updateState.bind(this)
   }
 
-  async componentDidMount() {
-    let userInfo = await register();
+  updateState(u: userInterface) {
     this.setState({
-      userId: userInfo.userId,
-      prolificId: userInfo.prolificId,
-      progress: userInfo.progress
+      userId: u.userId,
+      prolificId: u.prolificId,
+      progress: u.progress
     })
   }
-  
 
   render() {
     return (
       <div className="App">
-        <Sidebar points={210} total={15} current={12} />
-        <Imagegrid />
-
+          <Start updateParentState={this.updateState} />
+          <Sidebar points={210} total={15} current={12} />
+          <Imagegrid />
       </div>
     );
   }
