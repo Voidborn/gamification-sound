@@ -1,13 +1,20 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller('register')
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
-  @Get('hello')
-  getHello() {
-    const data = this.appService.getHello();
-    return { info: data }
+  @Get()
+  register() {
+    const data = this.appService.registerUser();
+    console.log(data)
+    return { data }
+  }
+
+  @Get(':prolificId')
+  registerWithProlific(@Param() param) {
+    const data = this.appService.registerUser(param.prolificId);
+    return { data }
   }
 }
