@@ -2,7 +2,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller('register')
-export class AppController {
+export class RegistrationController {
   constructor(private readonly appService: AppService) { }
 
   @Get()
@@ -15,6 +15,17 @@ export class AppController {
   @Get(':prolificId')
   registerWithProlific(@Param() param) {
     const data = this.appService.registerUser(param.prolificId);
+    return { data }
+  }
+}
+
+@Controller('getData')
+export class DataController {
+  constructor(private readonly appService: AppService) { }
+
+  @Get('nextImage/')
+  getNextImage() {
+    const data = this.appService.getNextImage();
     return { data }
   }
 }

@@ -1,9 +1,10 @@
 import React from 'react'
-import register from '../api';
 
-import { userInterface } from '../interfaces/userInterface'
+import { register } from '../api'
+
+import { User } from '../interfaces/userInterface'
 interface IProps {
-   updateParentState(arg0:userInterface):void
+   updateParentState(arg0:User):void
 }
 
 interface IState {

@@ -1,4 +1,4 @@
-export interface userInterface {
+export interface User {
     userId: number,
     prolificId: string,
     progress: number,
