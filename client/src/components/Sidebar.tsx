@@ -5,7 +5,14 @@ import Pointbubble from './Pointbubble'
 
 import Progressbar from './Progressbar'
 
-function Sidebar(props: { points: number, total: number, current: number} )
+interface IProps {
+    points: number,
+    total: number,
+    current: number,
+    pointHistory: number[]
+}
+
+function Sidebar(props: IProps)
 {
     return (
         <div className="sidebar">
@@ -13,12 +20,13 @@ function Sidebar(props: { points: number, total: number, current: number} )
             <Pointbubble points={props.points}/>
             <div className="history">
                 <h3 className="history-element">History</h3>
-                <p className="history-element">Entry</p>
-                <p className="history-element">Entry</p>
-                <p className="history-element">Entry</p>
-                <p className="history-element">Entry</p>
-                <p className="history-element">Entry</p>
-                <p className="history-element">Entry</p>
+                {(props.pointHistory.slice().reverse()).map((e, index) => 
+                    (index < 15) ?
+                        <p className="history-element">{e} Points</p>
+                        :
+                        null
+                )}
+
             </div>
         </div>
     )

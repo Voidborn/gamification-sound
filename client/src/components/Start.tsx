@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { setConstantValue } from 'typescript';
 
 import { register } from '../api'
 
@@ -11,23 +12,34 @@ interface IState {
     prolificId: string,
 }
 
-class Start extends React.Component<IProps,IState> {
+const Start = (props: IProps) => {
+    const [prolificId, setProlificId] = useState("");
 
-    async registerUser() {
-        let userInfo = await register();
+    const registerUser = async () => {
+        let userInfo = (prolificId === "") ? await register() : await register(prolificId);
+
         console.log(userInfo)
-        this.props.updateParentState(userInfo);
+        props.updateParentState(userInfo);
       }
 
-    render() {
-        return (
+    return (
+        <div>
             <div className="grid-row">
-                <div className="grid-col">
-                    <button className="btn" onClick={(event) => { this.registerUser() }}><h1>START STUDY</h1></button>
+                <div>
+                    <p>If you come from Prolific, please put your Prolific ID here:</p>
+                    <input value={prolificId} onChange={e=> setProlificId(e.target.value)} />
                 </div>
             </div>
-        )
-    }
+            <p></p>
+            <div className="grid-row">
+                <div className="grid-col">
+                    <button className="btn" onClick={(event) => { registerUser() }}><h1>START STUDY</h1></button>
+                </div>
+            </div>
+        </div>
+
+    )
+    
 }
 
 

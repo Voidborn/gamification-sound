@@ -6,7 +6,7 @@ const baseUrl = "http://localhost:8080/";
 export async function register(prolific?: string): Promise<User>{    
     let prolificId = "";
     if (prolific) {
-        prolificId = ":" + prolific;
+        prolificId = prolific;
     }
 
     let user = await fetch(baseUrl + "register/"+prolificId)
