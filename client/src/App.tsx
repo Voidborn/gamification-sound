@@ -1,48 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 
 import { User } from './interfaces/userInterface';
 import Start from './components/Start'
 import Imagerating from './components/Imagerating'
+import DemographicsQ from './components/DemographicsQ'
 
-class App extends React.Component<{},User> {
-  constructor(props: User) {
-    super(props);
+const App = () => {
+  const [userId, setUserId] = useState(0);
+  const [prolificId, setProlificId] = useState("");
+  const [progress, setProgress] = useState(0);
 
-    this.state = {
-      userId: 0,
-      prolificId: "",
-      progress: 0
-    }
-
-    this.updateState = this.updateState.bind(this)
+  const updateState = (u: User) => {
+    setUserId(u.userId);
+    setProlificId(u.prolificId);
+    setProgress(u.progress);
   }
 
-  updateState(u: User) {
-    this.setState({
-      userId: u.userId,
-      prolificId: u.prolificId,
-      progress: u.progress
-    })
+  const submitData = () =>{
+    //TODO: Placeholder to be replaced by server message
+    setProgress(1+progress);
   }
 
-  generateContent () {
-    switch (this.state.progress) {
+  const generateContent=() => {
+    switch (progress) {
       case 0:
-        return <Start updateParentState={this.updateState} />
+        return <Start updateParentState={updateState}/>
       case 1:
-        return <Imagerating userId={this.state.userId}/>
+        return <DemographicsQ submitData={submitData}/>
+      case 2:
+        return <Imagerating userId={userId}/>
     }
   }
 
-  render() {
-    return (
-      <div className="App">
-        {this.generateContent()}
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      {generateContent()}
+    </div>
+  );
+  
 }
 
 export default App;
