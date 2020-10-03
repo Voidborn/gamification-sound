@@ -6,7 +6,8 @@ import Start from './components/Start'
 import Imagerating from './components/Imagerating'
 import Questionnaire from './components/Questionnaire'
 
-import data from './questionnairesJSON/demographics'
+import demographics from './questionnairesJSON/demographics'
+import music from './questionnairesJSON/music'
 
 const App = () => {
   const [userId, setUserId] = useState(0);
@@ -19,8 +20,9 @@ const App = () => {
     setProgress(u.progress);
   }
 
-  const submitData = () =>{
+  const submitData = (data:any) =>{
     //TODO: Placeholder to be replaced by server message
+
     setProgress(1+progress);
   }
 
@@ -29,9 +31,9 @@ const App = () => {
       case 0:
         return <Start updateParentState={updateState}/>
       case 1:
-        return <Questionnaire surveyJson={data} submitData={submitData}/>
+        return <Questionnaire surveyJson={demographics} submitData={submitData}/>
       case 2:
-        return <Questionnaire surveyJson={data} submitData={submitData}/>
+        return <Questionnaire surveyJson={music} submitData={submitData}/>
       case 3:
         return <Imagerating userId={userId}/>
     }

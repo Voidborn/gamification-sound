@@ -7,7 +7,7 @@ Survey.StylesManager.applyTheme("orange");
 
 
 interface IProps {
-    submitData(): void,
+    submitData(arg0:any): void,
     surveyJson: Object
 }
 
@@ -15,14 +15,15 @@ const DemographicsQ = (props: IProps) => {
 
     const sendDataToServer = (survey: any) => {
         //send Ajax request to your web server.
-        console.log("The results are:" + JSON.stringify(survey.data));
-        props.submitData();
+        props.submitData(survey.data);
     }
 
     return (
-        <Survey.Survey
-            json={props.surveyJson}
-            onComplete={sendDataToServer} />
+        <div className="grid-row">
+            <Survey.Survey
+                json={props.surveyJson}
+                onComplete={sendDataToServer} />
+        </div>
     )
 }
 

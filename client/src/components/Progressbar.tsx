@@ -11,7 +11,7 @@ function Progressbar(props:{ total: number, current: number }) {
             <div className="progress-bar">
                 <div className="progress-done"
                     style={{ width: `${progress}%` }}>
-                    <p style={{color:"#FFC107"}}>.</p>
+                    <p style={{color:"#FFC107", margin:"0px"}}>.</p>
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 * {
-  margin: 0px;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -49,6 +48,7 @@ h1 {
 
 .point-number{
   font-size: 600%;
+  margin: 0px;
 }
 
 .point-text{
@@ -99,6 +99,7 @@ h1 {
 .history-element{
   display: flex;
   justify-content: space-around;
+  margin: 3px;
 }
 
 .image-rating{
