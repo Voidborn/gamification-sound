@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import './App.css';
 
-
 import { User } from './interfaces/userInterface';
 import Start from './components/Start'
 import Imagerating from './components/Imagerating'
-import DemographicsQ from './components/DemographicsQ'
+import Questionnaire from './components/Questionnaire'
+
+import data from './questionnairesJSON/demographics'
 
 const App = () => {
   const [userId, setUserId] = useState(0);
@@ -28,8 +29,10 @@ const App = () => {
       case 0:
         return <Start updateParentState={updateState}/>
       case 1:
-        return <DemographicsQ submitData={submitData}/>
+        return <Questionnaire surveyJson={data} submitData={submitData}/>
       case 2:
+        return <Questionnaire surveyJson={data} submitData={submitData}/>
+      case 3:
         return <Imagerating userId={userId}/>
     }
   }
