@@ -4,13 +4,17 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { UserModule } from './user/user.module';
+import { ResponsesModule } from './responses/responses.module';
+import { ImageratingsModule } from './imageratings/imageratings.module';
 
 
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
-    UserModule],
+    UserModule,
+    ResponsesModule,
+    ImageratingsModule],
   controllers: [RegistrationController, DataController],
   providers: [AppService],
 })

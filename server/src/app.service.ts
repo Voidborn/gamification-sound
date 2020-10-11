@@ -17,6 +17,10 @@ export class AppService {
   }
 
   getNextImage(): imageExport {
+    //get current user progress
+    //randomize remaining pictures
+    //return picture
+
     return {
       path: "img/traffic-signs/road610.png",
       points: [0, 0, 0, 10, 0, 0, 10, 0, 0, 0, 0, 0],

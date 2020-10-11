@@ -1,0 +1,38 @@
+{
+  "images": [
+    {
+      "path": "img/traffic-signs/road610.png",
+      "points": [
+        0,
+        0,
+        0,
+        50,
+        0,
+        0,
+        50,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "path": "img/traffic-signs/road536.png",
+      "points": [
+        0,
+        5,
+        10,
+        0,
+        5,
+        10,
+        0,
+        5,
+        10,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

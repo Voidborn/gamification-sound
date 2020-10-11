@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
 export class UserEntity {
@@ -7,9 +7,6 @@ export class UserEntity {
 
     @Column('text')
     prolificId: string;
-
-    @Column('int')
-    progress: number;
 
     @Column('int')
     testgroup: number;
