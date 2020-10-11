@@ -1,30 +1,18 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller('register')
-export class RegistrationController {
+@Controller()
+export class AppController {
   constructor(private readonly appService: AppService) { }
 
-  @Get()
-  register() {
-    const data = this.appService.registerUser();
-    console.log(data)
-    return { data }
+  @Get('img/:name')
+  image(@Param('name') name, @Res() res) {
+    var imgPath = "/images/" + name;
+    return res.sendFile(imgPath, { root: 'public' });
   }
 
-  @Get(':prolificId')
-  registerWithProlific(@Param() param) {
-    const data = this.appService.registerUser(param.prolificId);
-    return { data }
-  }
-}
-
-@Controller('nextImage')
-export class DataController {
-  constructor(private readonly appService: AppService) { }
-
-  @Get()
-  getNextImage() {
+  @Get('nextImage/:userId')
+  getNextImage(@Param('userId') userId) {
     const data = this.appService.getNextImage();
     return { data }
   }

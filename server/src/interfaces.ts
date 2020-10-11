@@ -5,6 +5,6 @@ export interface userExport {
 }
 
 export interface imageExport {
-    path: string,
+    name: string,
     points: number[]
 }

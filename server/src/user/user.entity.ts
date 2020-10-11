@@ -10,4 +10,13 @@ export class UserEntity {
 
     @Column('int')
     testgroup: number;
+
+    @Column('int')
+    studyProgress: number;
+
+    @Column('varchar')
+    imageOrder: string;
+
+    @Column('int')
+    currentImage: number;
 }

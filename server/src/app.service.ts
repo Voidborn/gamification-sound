@@ -24,7 +24,7 @@ export class AppService {
     //return picture
 
     return {
-      path: imgJson.images[0].path,
+      name: imgJson.images[0].name,
       points: imgJson.images[0].points,
     }
   }

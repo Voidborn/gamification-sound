@@ -11,5 +11,4 @@ export class ResponsesController {
     createResponse(@Body() data: ResponseDTO) {
         return this.resService.create(data);
     }
-
 }
