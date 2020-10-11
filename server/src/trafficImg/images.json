@@ -1,7 +1,7 @@
 {
   "images": [
     {
-      "path": "img/traffic-signs/road610.png",
+      "path": "road610.png",
       "points": [
         0,
         0,
@@ -18,7 +18,7 @@
       ]
     },
     {
-      "path": "img/traffic-signs/road536.png",
+      "path": "road536.png",
       "points": [
         0,
         5,

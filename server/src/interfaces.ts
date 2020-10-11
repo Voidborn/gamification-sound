@@ -6,6 +6,5 @@ export interface userExport {
 
 export interface imageExport {
     path: string,
-    points: number[],
-    marked: boolean[]
+    points: number[]
 }

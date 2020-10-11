@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { userExport } from './interfaces';
 import { imageExport } from './interfaces';
+import imgJson from './trafficImg/images.json';
 
 @Injectable()
 export class AppService {
@@ -17,14 +18,14 @@ export class AppService {
   }
 
   getNextImage(): imageExport {
+    console.log(imgJson.images[0]);
     //get current user progress
     //randomize remaining pictures
     //return picture
 
     return {
-      path: "img/traffic-signs/road610.png",
-      points: [0, 0, 0, 10, 0, 0, 10, 0, 0, 0, 0, 0],
-      marked: [false, false, false, false, false, false, false, false, false, false, false, false]
+      path: imgJson.images[0].path,
+      points: imgJson.images[0].points,
     }
   }
 }

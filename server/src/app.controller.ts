@@ -19,11 +19,11 @@ export class RegistrationController {
   }
 }
 
-@Controller('getData')
+@Controller('nextImage')
 export class DataController {
   constructor(private readonly appService: AppService) { }
 
-  @Get('nextImage/')
+  @Get()
   getNextImage() {
     const data = this.appService.getNextImage();
     return { data }
