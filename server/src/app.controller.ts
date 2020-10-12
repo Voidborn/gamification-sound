@@ -10,10 +10,4 @@ export class AppController {
     var imgPath = "/images/" + name;
     return res.sendFile(imgPath, { root: 'public' });
   }
-
-  @Get('nextImage/:userId')
-  getNextImage(@Param('userId') userId: string) {
-    const data = this.appService.getNextImage(userId);
-    return { data }
-  }
 }

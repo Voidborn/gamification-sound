@@ -32,6 +32,11 @@ export class UserController {
     @Delete(':userId')
     deleteUser(@Param('userId') userId: string) {
         return this.userService.destroy(userId);
+    }
 
+    @Get('nextImage/:userId')
+    getNextImage(@Param('userId') userId: string) {
+        console.log("next Image route " + userId)
+        return this.userService.getNextImage(userId);
     }
 }

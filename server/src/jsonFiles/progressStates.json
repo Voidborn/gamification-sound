@@ -1,0 +1,8 @@
+{
+  "registered": 1,
+  "demographics": 2,
+  "musicDemographics": 3,
+  "soundCalibration": 4,
+  "imageRating": 5,
+  "questionnaire1": 6
+}

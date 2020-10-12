@@ -4,8 +4,11 @@ import { Repository } from 'typeorm';
 import { UserDTO } from './user.dto';
 
 import { UserEntity } from './user.entity';
+import { imageExport } from '../interfaces';
 
-import imgJson from '../trafficImg/images.json'
+import imgJson from '../jsonFiles/images.json';
+import progressStates from '../jsonFiles/progressStates.json'
+import { promises } from 'fs';
 
 @Injectable()
 export class UserService {
@@ -44,7 +47,7 @@ export class UserService {
         var userData: UserDTO = {
             prolificId: data.prolificId,
             testgroup: testgroup,
-            studyProgress: 1,
+            studyProgress: progressStates.registered,
             imageOrder: imageOrder,
             currentImage: 0
         }
@@ -65,5 +68,24 @@ export class UserService {
     async destroy(userId: string) {
         await this.userRepository.delete({ userId });
         return { deleted: true };
+    }
+
+    async getNextImage(userId: string): Promise<imageExport> {
+        try {
+            let user = await this.userRepository.findOne({ where: { userId } });
+            let img = {
+                name: "",
+                points: []
+            }
+            if (user.studyProgress == progressStates.imageRating) {
+                var imageArray = JSON.parse(user.imageOrder);
+                var imageIndex = imageArray.array[user.currentImage];
+                img = {
+                    name: imgJson.images[imageIndex].name,
+                    points: imgJson.images[imageIndex].points
+                }
+            }
+            return img
+        } catch (err) { console.log(err) }
     }
 }
