@@ -12,8 +12,8 @@ export class AppController {
   }
 
   @Get('nextImage/:userId')
-  getNextImage(@Param('userId') userId) {
-    const data = this.appService.getNextImage();
+  getNextImage(@Param('userId') userId: string) {
+    const data = this.appService.getNextImage(userId);
     return { data }
   }
 }

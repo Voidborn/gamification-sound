@@ -9,19 +9,10 @@ export class AppService {
     return 'Hello World!';
   }
 
-  registerUser(param?: string): userExport {
-    return {
-      userId: 1,
-      prolificId: (param != null) ? param : "",
-      progress: 1
-    }
-  }
-
-  getNextImage(): imageExport {
+  getNextImage(userId: string): imageExport {
     console.log(imgJson.images[0]);
     //get current user progress
-    //randomize remaining pictures
-    //return picture
+    //return picture 
 
     return {
       name: imgJson.images[0].name,
