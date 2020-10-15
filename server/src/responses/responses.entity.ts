@@ -8,7 +8,10 @@ export class ResponseEntity {
     @PrimaryColumn('varchar')
     questionId: string;
 
-    @Column('text')
+    @Column('integer')
+    studyProgress: number;
+
+    @Column('varchar')
     answer: string;
 
     @CreateDateColumn()

@@ -9,10 +9,10 @@ import { UserService } from './user.service'
 export class UserController {
     constructor(private userService: UserService) { }
 
-    @Get()
-    showAllUsers() {
-        return this.userService.showAll();
-    }
+    //@Get()
+    //showAllUsers() {
+    //    return this.userService.showAll();
+    //}
 
     @Post()
     createUser(@Body() data: { prolificId: string }) {

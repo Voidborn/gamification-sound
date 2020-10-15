@@ -8,7 +8,7 @@ export class ResponsesController {
     constructor(private resService: ResponsesService) { }
 
     @Post()
-    createResponse(@Body() data: ResponseDTO) {
+    createResponse(@Body() data: ResponseDTO): Promise<{ studyProgress: number, accepted: boolean }> {
         return this.resService.create(data);
     }
 }

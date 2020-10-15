@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { UserDTO } from './user.dto';
 
 import { UserEntity } from './user.entity';
-import { imageExport } from '../interfaces';
+import { imageExport, userExport } from '../interfaces';
 
 import imgJson from '../jsonFiles/images.json';
 import progressStates from '../jsonFiles/progressStates.json'
@@ -70,6 +70,7 @@ export class UserService {
         return { deleted: true };
     }
 
+    //returns name and points for new user picture
     async getNextImage(userId: string): Promise<imageExport> {
         try {
             let user = await this.userRepository.findOne({ where: { userId } });
@@ -87,5 +88,35 @@ export class UserService {
             }
             return img
         } catch (err) { console.log(err) }
+    }
+
+    //only called on response submission!
+    async progressStudy(userId: string): Promise<UserDTO> {
+        let user = await this.read(userId);
+
+        //if user is currently not in the image rating process
+        let condition1 = user.studyProgress !== progressStates.imageRating;
+
+        // and not rating his last image
+        let total_images_for_user = JSON.parse(user.imageOrder).array.length - 1;
+        let condition2 = user.currentImage >= total_images_for_user;
+
+        if (condition1 || condition2) {
+            let newProgress = user.studyProgress + 1;
+            await this.userRepository.update(userId, { studyProgress: newProgress });
+
+            return {
+                ...user,
+                studyProgress: newProgress
+            }
+        } else {
+            // set next image for user to rate!
+            let newImage = user.currentImage + 1;
+            await this.userRepository.update(userId, { currentImage: newImage });
+
+            return {
+                ...user
+            }
+        }
     }
 }
