@@ -9,15 +9,16 @@ import { UserService } from './user.service'
 export class UserController {
     constructor(private userService: UserService) { }
 
-    //@Get()
-    //showAllUsers() {
-    //    return this.userService.showAll();
-    //}
-
-    @Post()
-    createUser(@Body() data: { prolificId: string }) {
-        return this.userService.create(data);
+    @Post('login')
+    loginUser(@Body() data) {
+        return this.userService.login(data);
     }
+
+    @Post('register')
+    registerUser(@Body() data: { prolificId: string }) {
+        return this.userService.register(data);
+    }
+
 
     @Get(':userId')
     readUser(@Param('userId') userId: string) {
@@ -27,11 +28,6 @@ export class UserController {
     @Put(':userId')
     updateUser(@Param('userId') userId: string, @Body() data: Partial<UserDTO>) {
         return this.userService.update(userId, data);
-    }
-
-    @Delete(':userId')
-    deleteUser(@Param('userId') userId: string) {
-        return this.userService.destroy(userId);
     }
 
     @Get('nextImage/:userId')

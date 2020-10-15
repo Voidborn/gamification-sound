@@ -21,8 +21,7 @@ export class UserService {
         return await this.userRepository.find();
     }
 
-    async create(data: { prolificId: string }) {
-        console.log(data);
+    async register(data: { prolificId: string }) {
         //set the amount of test groups
         var test_groups = 4;
         var testgroup = Math.floor(Math.random() * Math.floor(test_groups));
@@ -53,7 +52,11 @@ export class UserService {
         }
         const user = await this.userRepository.create(userData);
         await this.userRepository.save(user);
-        return user;
+        return user.toResponseObject();
+    }
+
+    async login(data) {
+
     }
 
     async read(userId: string) {

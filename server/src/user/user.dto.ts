@@ -5,3 +5,8 @@ export interface UserDTO {
     imageOrder: string;
     currentImage: number;
 }
+
+export class UserRO {
+    userId: string;
+    token?: string;
+}
