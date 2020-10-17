@@ -1,4 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { AuthGuard } from 'src/shared/auth.guard';
+import { User } from './user.decorator';
 
 import { UserDTO } from './user.dto';
 import { UserService } from './user.service'
@@ -20,18 +22,21 @@ export class UserController {
     }
 
 
-    @Get(':userId')
-    readUser(@Param('userId') userId: string) {
+    @Get('readinfo')
+    @UseGuards(new AuthGuard())
+    readUser(@User('userId') userId: string) {
         return this.userService.read(userId);
     }
 
-    @Put(':userId')
-    updateUser(@Param('userId') userId: string, @Body() data: Partial<UserDTO>) {
+    @Put()
+    @UseGuards(new AuthGuard())
+    updateUser(@User('userId') userId: string, @Body() data: Partial<UserDTO>) {
         return this.userService.update(userId, data);
     }
 
-    @Get('nextImage/:userId')
-    getNextImage(@Param('userId') userId: string) {
+    @Get('nextImage')
+    @UseGuards(new AuthGuard())
+    getNextImage(@User('userId') userId: string) {
         console.log("next Image route " + userId)
         return this.userService.getNextImage(userId);
     }

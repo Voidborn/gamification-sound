@@ -91,19 +91,15 @@ export class UserService {
         if (!user) {
             throw new HttpException('User not found', HttpStatus.NOT_FOUND);
         }
-        let img = {
-            name: "",
-            points: []
+        if (user.studyProgress != progressStates.imageRating) {
+            throw new HttpException('User progress is not at image rating', HttpStatus.BAD_REQUEST)
         }
-        if (user.studyProgress == progressStates.imageRating) {
-            var imageArray = JSON.parse(user.imageOrder);
-            var imageIndex = imageArray.array[user.currentImage];
-            img = {
-                name: imgJson.images[imageIndex].name,
-                points: imgJson.images[imageIndex].points
-            }
+        var imageArray = JSON.parse(user.imageOrder);
+        var imageIndex = imageArray.array[user.currentImage];
+        return {
+            name: imgJson.images[imageIndex].name,
+            points: imgJson.images[imageIndex].points
         }
-        return img
 
     }
 
