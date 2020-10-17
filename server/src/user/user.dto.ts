@@ -1,4 +1,4 @@
-export interface UserDTO {
+export class UserDTO {
     prolificId: string;
     testgroup: number;
     studyProgress: number;

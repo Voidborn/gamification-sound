@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
   var publicDir = require('path').join(__dirname, '../public');
-  console.log(publicDir);
+  console.log("public directory: " + publicDir);
   app.use(express.static(publicDir));
 
   app.use((req, res, next) => {

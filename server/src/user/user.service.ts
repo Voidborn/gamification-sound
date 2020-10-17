@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserDTO } from './user.dto';
@@ -60,37 +60,51 @@ export class UserService {
     }
 
     async read(userId: string) {
-        return await this.userRepository.findOne({ where: { userId } });
+        const user = await this.userRepository.findOne({ where: { userId } });
+        if (!user) {
+            throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+        }
+        return user;
     }
 
     async update(userId: string, data: Partial<UserDTO>) {
+        const user = await this.userRepository.findOne({ where: { userId } });
+        if (!user) {
+            throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+        }
         await this.userRepository.update({ userId }, data);
         return await this.userRepository.findOne({ userId })
     }
 
     async destroy(userId: string) {
+        const user = await this.userRepository.findOne({ where: { userId } });
+        if (!user) {
+            throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+        }
         await this.userRepository.delete({ userId });
         return { deleted: true };
     }
 
     //returns name and points for new user picture
     async getNextImage(userId: string): Promise<imageExport> {
-        try {
-            let user = await this.userRepository.findOne({ where: { userId } });
-            let img = {
-                name: "",
-                points: []
+        let user = await this.userRepository.findOne({ where: { userId } });
+        if (!user) {
+            throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+        }
+        let img = {
+            name: "",
+            points: []
+        }
+        if (user.studyProgress == progressStates.imageRating) {
+            var imageArray = JSON.parse(user.imageOrder);
+            var imageIndex = imageArray.array[user.currentImage];
+            img = {
+                name: imgJson.images[imageIndex].name,
+                points: imgJson.images[imageIndex].points
             }
-            if (user.studyProgress == progressStates.imageRating) {
-                var imageArray = JSON.parse(user.imageOrder);
-                var imageIndex = imageArray.array[user.currentImage];
-                img = {
-                    name: imgJson.images[imageIndex].name,
-                    points: imgJson.images[imageIndex].points
-                }
-            }
-            return img
-        } catch (err) { console.log(err) }
+        }
+        return img
+
     }
 
     //only called on response submission!
