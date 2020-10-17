@@ -17,7 +17,7 @@ const Imagegrid = (props: IProps) => {
     const [marked, setMarked] = useState([false,false,false,false,false,false,false,false,false,false,false,false])
 
     const getNextImage = async () => {
-        let newImage:Image = await fetchNextImage(props.userId);
+        let newImage: Image = await fetchNextImage();
         setImagePath(newImage.path);
         setPoints(newImage.points);
         setMarked(newImage.marked);

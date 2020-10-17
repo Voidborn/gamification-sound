@@ -17,8 +17,9 @@ export class UserController {
     }
 
     @Post('register')
-    registerUser(@Body() data: { prolificId: string }) {
-        return this.userService.register(data);
+    registerUser(@Body('prolificId') prolificId: string) {
+        console.log("registration data: ", prolificId);
+        return this.userService.register(prolificId);
     }
 
 

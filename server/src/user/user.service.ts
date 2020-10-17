@@ -21,7 +21,7 @@ export class UserService {
         return await this.userRepository.find();
     }
 
-    async register(data: { prolificId: string }) {
+    async register(prolificId: string) {
         //set the amount of test groups
         var test_groups = 4;
         var testgroup = Math.floor(Math.random() * Math.floor(test_groups));
@@ -44,7 +44,7 @@ export class UserService {
 
         //set new user Data
         var userData: UserDTO = {
-            prolificId: data.prolificId,
+            prolificId: prolificId,
             testgroup: testgroup,
             studyProgress: progressStates.registered,
             imageOrder: imageOrder,

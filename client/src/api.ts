@@ -1,25 +1,38 @@
+import Cookies from 'universal-cookie';
+
 import { User } from './interfaces/userInterface'
 import {Image} from './interfaces/imageInterface'
 
+
 const baseUrl = "http://localhost:8080/";
 
-export async function register(prolific?: string): Promise<User>{    
-    let prolificId = "";
-    if (prolific) {
-        prolificId = prolific;
+export async function register(prolific?: string): Promise<User>{
+    const cookies = new Cookies();
+    var opts = {
+        prolificId: prolific ?prolific:""
     }
 
-    let user = await fetch(baseUrl + "register/"+prolificId)
+    //TODO: Handle possible errors
+    console.log("tries to login with data: ",JSON.stringify(opts))
+    let token = await fetch(
+        baseUrl + "user/register/",
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(opts)
+        })
         .then(response => response.json())
         .then(response => {
-            return response.data
+            return response.token
         })
         .catch(err => { console.log(err) })
-    
-    return(user)
+    cookies.set('AuthToken', token, { path: '/' });
+    return (token)
 }
 
-export async function fetchNextImage(userId: number): Promise<Image>{
+export async function fetchNextImage(): Promise<Image>{
     //TODO: add userId into server
     let image = await fetch(baseUrl + "getData/nextImage/")
         .then(response => response.json())
@@ -31,3 +44,5 @@ export async function fetchNextImage(userId: number): Promise<Image>{
     console.log(image)
     return (image);
 }
+
+
