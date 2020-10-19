@@ -1,29 +1,42 @@
 import React, {useState} from 'react';
 import './App.css';
 
-import { User } from './interfaces/userInterface';
 import Start from './components/Start'
 import Imagerating from './components/Imagerating'
 import Questionnaire from './components/Questionnaire'
 
 import demographics from './questionnairesJSON/demographics'
 import music from './questionnairesJSON/music'
+import { Response, UserInfo } from './interfaces/interfaces';
+import { fetchUserInfo, submitResponse } from './api';
 
 const App = () => {
-  const [userId, setUserId] = useState(0);
-  const [prolificId, setProlificId] = useState("");
   const [progress, setProgress] = useState(0);
+  const [testgroup, setTestgroup] = useState(0);
 
-  const updateState = (u: User) => {
-    setUserId(u.userId);
-    setProlificId(u.prolificId);
-    setProgress(u.progress);
+  const updateState = (user: UserInfo) => {
+    setProgress(user.studyProgress);
+    setTestgroup(user.testgroup);
   }
 
-  const submitData = (data:any) =>{
+  const submitData = async (questionId: string, answer: string) =>{
     //TODO: Placeholder to be replaced by server message
+    let response: Response = {
+      studyProgress: progress,
+      questionId: questionId,
+      answer: answer
+    }
+    let submissionSuccess = await submitResponse(response);
+    console.log(submissionSuccess);
+    if (!submissionSuccess) {
+      console.error("Answer submission failed!");
+    }
 
-    setProgress(1+progress);
+    let newUserInfo = await fetchUserInfo();
+    console.log(newUserInfo);
+    if (newUserInfo.studyProgress !== progress) {
+      setProgress(newUserInfo.studyProgress)
+    }
   }
 
   const generateContent=() => {
@@ -31,11 +44,11 @@ const App = () => {
       case 0:
         return <Start updateParentState={updateState}/>
       case 1:
-        return <Questionnaire surveyJson={demographics} submitData={submitData}/>
+        return <Questionnaire surveyJson={demographics} submitData={submitData} questionId="demographics"/>
       case 2:
-        return <Questionnaire surveyJson={music} submitData={submitData}/>
+        return <Questionnaire surveyJson={music} submitData={submitData} questionId="music"/>
       case 3:
-        return <Imagerating userId={userId}/>
+        return <Imagerating submitData={submitData}/>
     }
   }
 

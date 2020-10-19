@@ -4,12 +4,11 @@ import Sidebar from './Sidebar';
 import Imagegrid from './Imagegrid';
 
 interface IProps{
-    userId: number
+    submitData(arg0:string,arg1:any): void,
 }
 
 const Imagerating = (props: IProps) => {
     const [points, setPoints] = useState(0);
-    const [userId] = useState(props.userId);
     const [pointHistory, setHistory] = useState<number[]>([]);
     
     return (
@@ -22,7 +21,8 @@ const Imagerating = (props: IProps) => {
                     newHistory.push(p);
                     setHistory(newHistory);
                 }}
-                userId={userId} />
+                submitData={props.submitData}
+                />
         </div>
     )
 }

@@ -7,15 +7,16 @@ Survey.StylesManager.applyTheme("orange");
 
 
 interface IProps {
-    submitData(arg0:any): void,
-    surveyJson: Object
+    submitData(arg0:string,arg1:any): void,
+    surveyJson: Object,
+    questionId: string
 }
 
 const DemographicsQ = (props: IProps) => {
 
     const sendDataToServer = (survey: any) => {
         //send Ajax request to your web server.
-        props.submitData(survey.data);
+        props.submitData(props.questionId,survey.data);
     }
 
     return (

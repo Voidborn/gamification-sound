@@ -15,22 +15,27 @@ export class ResponsesService {
         private userService: UserService,
     ) { }
 
-    async create(data: ResponseDTO) {
+    async create(userId: string, data: ResponseDTO) {
         //TODO: validate data
-        let user = await this.userService.read(data.userId);
+        let user = await this.userService.read(userId);
         let progress = user.studyProgress;
         let accepted = false;
-        if (progress === data.studyProgress) {
-            //inserts new data into database
-            const response = await this.responseRepository.create(data);
-            await this.responseRepository.save(response);
-
-            //updates user progress
-            progress = (await this.userService.progressStudy(data.userId)).studyProgress;
-            accepted = true;
+        let entry = {
+            userId: userId,
+            questionId: data.questionId,
+            studyProgress: data.studyProgress,
+            answer: JSON.stringify(data.answer)
         }
 
-        //returns userProgress
-        return { studyProgress: progress, accepted: accepted };
+        if (progress === data.studyProgress) {
+            //inserts new data into database
+            const response = await this.responseRepository.create(entry);
+            await this.responseRepository.save(response);
+            //updates user progress
+            progress = (await this.userService.progressStudy(userId)).studyProgress;
+            accepted = true;
+        }
+        //returns whether the entry was accepted
+        return { accepted: accepted };
     }
 }

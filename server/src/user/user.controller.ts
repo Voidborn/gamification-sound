@@ -18,12 +18,11 @@ export class UserController {
 
     @Post('register')
     registerUser(@Body('prolificId') prolificId: string) {
-        console.log("registration data: ", prolificId);
         return this.userService.register(prolificId);
     }
 
 
-    @Get('readinfo')
+    @Get('userinfo')
     @UseGuards(new AuthGuard())
     readUser(@User('userId') userId: string) {
         return this.userService.read(userId);

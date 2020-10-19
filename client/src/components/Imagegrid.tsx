@@ -1,20 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import { fetchNextImage } from '../api';
-import { Image } from '../interfaces/imageInterface'
+import { Image } from '../interfaces/interfaces'
 
 
 interface IProps{
-    userId: number,
-    addPoints(arg0:number):void
+    addPoints(arg0: number): void,
+    submitData(arg0:string,arg1:any): void,
 }
 
 const Imagegrid = (props: IProps) => {
-
     // TODO: initial server request
-    const [imagePath, setImagePath] = useState("img/traffic-signs/road536.png");
-    const [points, setPoints] = useState([0, 5, 10, 0, 5, 10, 0, 5, 10, 0, 0, 0]);
+    const [imagePath, setImagePath] = useState("");
+    const [points, setPoints] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     const [marked, setMarked] = useState([false,false,false,false,false,false,false,false,false,false,false,false])
+
+    useEffect(() => {
+        
+    })
 
     const getNextImage = async () => {
         let newImage: Image = await fetchNextImage();
@@ -22,6 +25,7 @@ const Imagegrid = (props: IProps) => {
         setPoints(newImage.points);
         setMarked(newImage.marked);
     }
+
 
     const confirmImage = () => {
         let pointSum = 0;

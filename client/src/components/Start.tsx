@@ -1,11 +1,9 @@
 import React, {useState} from 'react'
-import { setConstantValue } from 'typescript';
+import { register, fetchUserInfo } from '../api'
+import { UserInfo } from '../interfaces/interfaces';
 
-import { register } from '../api'
-
-import { User } from '../interfaces/userInterface'
 interface IProps {
-   updateParentState(arg0:User):void
+   updateParentState(arg0: UserInfo):void
 }
 
 interface IState {
@@ -16,12 +14,13 @@ const Start = (props: IProps) => {
     const [prolificId, setProlificId] = useState("");
 
     const registerUser = async () => {
-        let userInfo = (prolificId === "") ? await register() : await register(prolificId);
-
-        console.log(userInfo)
-        props.updateParentState(userInfo);
+        let token = (prolificId === "") ? await register() : await register(prolificId);
+        if (token) {
+            let user = await fetchUserInfo();
+            props.updateParentState(user);
+        }
       }
-
+    
     return (
         <div>
             <div className="grid-row">
@@ -37,10 +36,7 @@ const Start = (props: IProps) => {
                 </div>
             </div>
         </div>
-
     )
-    
 }
-
 
 export default Start
