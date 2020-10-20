@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import { fetchNextImage } from '../api';
+import { fetchNextImage, getImageUrl } from '../api';
 import { Image } from '../interfaces/interfaces'
 
 
@@ -14,16 +14,20 @@ const Imagegrid = (props: IProps) => {
     const [imagePath, setImagePath] = useState("");
     const [points, setPoints] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     const [marked, setMarked] = useState([false,false,false,false,false,false,false,false,false,false,false,false])
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     useEffect(() => {
-        
+        if (!imageLoaded) {
+            getNextImage();
+            setImageLoaded(true);
+        }
     })
 
     const getNextImage = async () => {
         let newImage: Image = await fetchNextImage();
-        setImagePath(newImage.path);
+        setImagePath(getImageUrl(newImage.name));
         setPoints(newImage.points);
-        setMarked(newImage.marked);
+        setMarked([false,false,false,false,false,false,false,false,false,false,false,false]);
     }
 
 

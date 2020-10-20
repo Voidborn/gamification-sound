@@ -10,7 +10,6 @@ export async function register(prolific?: string): Promise<string>{
     }
 
     //TODO: Handle possible errors
-    console.log("tries to login with data: ",JSON.stringify(opts))
     let token = await fetch(
         baseUrl + "user/register/",
         {
@@ -75,7 +74,7 @@ export async function submitResponse(data: Response) {
 
 export async function fetchNextImage(): Promise<Image>{
     let image = await fetch(
-        baseUrl + "getData/nextImage/",
+        baseUrl + "user/nextImage/",
         {
             method: 'GET',
             headers: {
@@ -85,10 +84,15 @@ export async function fetchNextImage(): Promise<Image>{
     )
         .then(response => response.json())
         .then(response => {
-            return response.data
+            console.log(response)
+            return response
         })
         .catch(err=> {console.log(err)})
     
     console.log(image);
     return (image);
+}
+
+export function getImageUrl(name: string){
+    return baseUrl + "img/" + name;
 }

@@ -46,7 +46,7 @@ export class UserService {
         var userData: UserDTO = {
             prolificId: prolificId,
             testgroup: testgroup,
-            studyProgress: progressStates.registered,
+            studyProgress: progressStates.demographics,
             imageOrder: imageOrder,
             currentImage: 0
         }

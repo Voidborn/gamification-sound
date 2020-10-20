@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 
 import Start from './components/Start'
@@ -48,7 +48,9 @@ const App = () => {
       case 2:
         return <Questionnaire surveyJson={music} submitData={submitData} questionId="music"/>
       case 3:
-        return <Imagerating submitData={submitData}/>
+        return <Questionnaire surveyJson={demographics} submitData={submitData} questionId="soundCalibration"/>
+      case 4:
+        return <Imagerating submitData={submitData} />
     }
   }
 

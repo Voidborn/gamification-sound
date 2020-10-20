@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { register, fetchUserInfo } from '../api'
 import { UserInfo } from '../interfaces/interfaces';
+import { getToken } from '../cookieManager';
 
 interface IProps {
    updateParentState(arg0: UserInfo):void
@@ -12,6 +13,20 @@ interface IState {
 
 const Start = (props: IProps) => {
     const [prolificId, setProlificId] = useState("");
+    
+
+    useEffect(() => {
+        let token = getToken();
+        if (token && token !== "") {
+            console.log("use Effect in Start does stuff");
+            login();
+        }
+    })
+
+    const login = async () => {
+        let user = await fetchUserInfo();
+        props.updateParentState(user);
+    }
 
     const registerUser = async () => {
         let token = (prolificId === "") ? await register() : await register(prolificId);

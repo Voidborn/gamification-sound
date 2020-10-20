@@ -1,7 +1,6 @@
 export interface Image {
-    path: string,
+    name: string,
     points: number[],
-    marked: boolean[]
 }
 
 export interface UserInfo {
