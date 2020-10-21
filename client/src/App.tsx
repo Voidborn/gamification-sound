@@ -37,6 +37,8 @@ const App = () => {
     if (newUserInfo.studyProgress !== progress) {
       setProgress(newUserInfo.studyProgress)
     }
+    
+    return true;
   }
 
   const generateContent=() => {
@@ -50,7 +52,7 @@ const App = () => {
       case 3:
         return <Questionnaire surveyJson={demographics} submitData={submitData} questionId="soundCalibration"/>
       case 4:
-        return <Imagerating submitData={submitData} />
+        return <Imagerating submitData={submitData}  />
     }
   }
 

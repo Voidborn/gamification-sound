@@ -51,8 +51,7 @@ export async function fetchUserInfo(): Promise<UserInfo>{
 }
 
 export async function submitResponse(data: Response) {
-    console.log("blab",data);
-    console.log("blab2", JSON.stringify(data));
+    console.log("wants to submit", JSON.stringify(data));
     let submitSuccessful = await fetch(
         baseUrl + "response",
         {
@@ -84,12 +83,9 @@ export async function fetchNextImage(): Promise<Image>{
     )
         .then(response => response.json())
         .then(response => {
-            console.log(response)
             return response
         })
         .catch(err=> {console.log(err)})
-    
-    console.log(image);
     return (image);
 }
 
