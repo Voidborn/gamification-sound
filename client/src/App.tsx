@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 import Start from './components/Start'
@@ -37,7 +37,7 @@ const App = () => {
     if (newUserInfo.studyProgress !== progress) {
       setProgress(newUserInfo.studyProgress)
     }
-    
+
     return true;
   }
 

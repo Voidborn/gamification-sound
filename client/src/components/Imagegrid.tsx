@@ -90,6 +90,7 @@ const Imagegrid = (props: IProps) => {
                     <h1>NEXT IMAGE</h1>
                 </button>
             </div>
+            {imageName}
         </div>
     )
     
