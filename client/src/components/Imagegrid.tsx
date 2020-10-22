@@ -24,7 +24,7 @@ const Imagegrid = (props: IProps) => {
             getNextImage();
             setImageLoaded(true);
         }
-    })
+    },[imageLoaded])
 
     const getNextImage = async () => {
         let newImage: Image = await fetchNextImage();

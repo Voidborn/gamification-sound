@@ -10,3 +10,14 @@ export function setToken(token: string) {
     cookies.set('AuthToken', token, { path: '/' });
     return;
 }
+
+export function getPointsCookie() {
+    const cookies = new Cookies();
+    return cookies.get('CollectedPoints');
+}
+
+export function setPointsCookie(total: number) {
+    const cookies = new Cookies();
+    cookies.set('CollectedPoints', total, { path: '/' });
+    return;
+}
