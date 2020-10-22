@@ -7,6 +7,8 @@ import Questionnaire from './components/Questionnaire'
 
 import demographics from './questionnairesJSON/demographics'
 import music from './questionnairesJSON/music'
+import imi from './questionnairesJSON/imi'
+
 import { Response, UserInfo } from './interfaces/interfaces';
 import { fetchUserInfo, submitResponse } from './api';
 
@@ -50,9 +52,16 @@ const App = () => {
       case 2:
         return <Questionnaire surveyJson={music} submitData={submitData} questionId="music"/>
       case 3:
-        return <Questionnaire surveyJson={demographics} submitData={submitData} questionId="soundCalibration"/>
+        submitData("3", "no calibration done yet"); //TODO: sound calibration
+        return <div></div>
       case 4:
-        return <Imagerating submitData={submitData}  />
+        return <Imagerating submitData={submitData} />
+      case 5:
+        return <Questionnaire surveyJson={imi} submitData={submitData} questionId="imi" />
+      case 6:
+        return <div>
+          <p>THANK YOU FOR PARTICIPATING!</p>
+        </div>
     }
   }
 
