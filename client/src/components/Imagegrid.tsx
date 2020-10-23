@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
 
 import { fetchNextImage, getImageUrl} from '../api';
-import { Image } from '../interfaces/interfaces'
-
+import { Image } from '../interfaces/interfaces';
 
 interface IProps{
     addPoints(arg0: number): void,
     submitData(arg0: string, arg1: any): void,
-    
 }
 
 const Imagegrid = (props: IProps) => {
@@ -17,7 +15,7 @@ const Imagegrid = (props: IProps) => {
     const [points, setPoints] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     const [marked, setMarked] = useState([false,false,false,false,false,false,false,false,false,false,false,false])
     const [imageLoaded, setImageLoaded] = useState(false);
-
+    
     //kind of a ComponentDidMount function to load initial image
     useEffect(() => {
         if (!imageLoaded) {

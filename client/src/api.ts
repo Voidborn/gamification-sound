@@ -1,4 +1,4 @@
-import {getToken, setToken} from './cookieManager'
+import {getToken, setToken, resetCookies} from './cookieManager'
 import {Image, UserInfo, Response} from './interfaces/interfaces'
 
 const baseUrl = "http://localhost:8080/";
@@ -9,6 +9,7 @@ export async function register(prolific?: string): Promise<string>{
         prolificId: prolific ?prolific:""
     }
 
+    resetCookies();
     //TODO: Handle possible errors
     let token = await fetch(
         baseUrl + "user/register/",
@@ -91,4 +92,8 @@ export async function fetchNextImage(): Promise<Image>{
 
 export function getImageUrl(name: string){
     return baseUrl + "img/" + name;
+}
+
+export function getSoundUrl(name: string) {
+    return baseUrl + "sound/" + name;
 }

@@ -21,3 +21,8 @@ export function setPointsCookie(total: number) {
     cookies.set('CollectedPoints', total, { path: '/' });
     return;
 }
+
+export function resetCookies() {
+    setToken("");
+    setPointsCookie(0);
+}

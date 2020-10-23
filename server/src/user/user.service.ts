@@ -55,10 +55,6 @@ export class UserService {
         return user.toResponseObject();
     }
 
-    async login(data) {
-
-    }
-
     async read(userId: string) {
         const user = await this.userRepository.findOne({ where: { userId } });
         if (!user) {
@@ -100,7 +96,6 @@ export class UserService {
             name: imgJson.images[imageIndex].name,
             points: imgJson.images[imageIndex].points
         }
-
     }
 
     //only called on response submission!

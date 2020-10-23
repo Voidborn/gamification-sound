@@ -10,4 +10,10 @@ export class AppController {
     var imgPath = "/images/" + name;
     return res.sendFile(imgPath, { root: 'public' });
   }
+
+  @Get('sound/:name')
+  sound(@Param('name') name, @Res() res) {
+    var soundPath = "/sound/" + name;
+    return res.sendFile(soundPath, { root: 'public' });
+  }
 }

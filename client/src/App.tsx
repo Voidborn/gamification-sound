@@ -4,6 +4,7 @@ import './App.css';
 import Start from './components/Start'
 import Imagerating from './components/Imagerating'
 import Questionnaire from './components/Questionnaire'
+import Audioplayer from './components/Audioplayer'
 
 import demographics from './questionnairesJSON/demographics'
 import music from './questionnairesJSON/music'
@@ -68,6 +69,7 @@ const App = () => {
   return (
     <div className="App">
       {generateContent()}
+      <Audioplayer/>
     </div>
   );
   

@@ -11,16 +11,10 @@ import { UserService } from './user.service'
 export class UserController {
     constructor(private userService: UserService) { }
 
-    @Post('login')
-    loginUser(@Body() data) {
-        return this.userService.login(data);
-    }
-
     @Post('register')
     registerUser(@Body('prolificId') prolificId: string) {
         return this.userService.register(prolificId);
     }
-
 
     @Get('userinfo')
     @UseGuards(new AuthGuard())
