@@ -8,6 +8,7 @@ import { imageExport, userExport } from '../interfaces';
 
 import imgJson from '../jsonFiles/images.json';
 import progressStates from '../jsonFiles/progressStates.json'
+import soundJson from '../jsonFiles/sounds.json';
 import { promises } from 'fs';
 
 @Injectable()
@@ -23,16 +24,16 @@ export class UserService {
 
     async register(prolificId: string) {
         //set the amount of test groups
-        var test_groups = 4;
+        var test_groups = soundJson.sounds.length + 1;
         var testgroup = Math.floor(Math.random() * Math.floor(test_groups));
 
-        //create image order array
+        //create array with a number for each present image
         var myArray: number[] = [];
-
         for (var i = 0; i < imgJson.images.length; i++) {
             myArray.push(i);
         }
 
+        //random sort array
         for (var i = myArray.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
             var temp = myArray[i];
@@ -40,6 +41,7 @@ export class UserService {
             myArray[j] = temp;
         }
 
+        //feed new random array into database
         var imageOrder = JSON.stringify({ 'array': myArray })
 
         //set new user Data
@@ -96,6 +98,22 @@ export class UserService {
             name: imgJson.images[imageIndex].name,
             points: imgJson.images[imageIndex].points
         }
+    }
+
+    async getSoundName(userId: string): Promise<{ audiofile: string }> {
+        let user = await this.userRepository.findOne({ where: { userId } });
+        if (!user) {
+            throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+        }
+        if (user.testgroup === 0) {
+            return { audiofile: "" }
+        }
+        else {
+            let file = soundJson.sounds[user.testgroup];
+            console.log("selected the following soundfile " + file + " for group: " + user.testgroup);
+            return { audiofile: file.name }
+        }
+
     }
 
     //only called on response submission!

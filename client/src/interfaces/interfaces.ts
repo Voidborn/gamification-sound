@@ -5,7 +5,7 @@ export interface Image {
 
 export interface UserInfo {
     studyProgress: number,
-    testgroup: number
+    audiofile: string
 }
 
 export interface Response {

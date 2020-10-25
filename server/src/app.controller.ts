@@ -13,7 +13,7 @@ export class AppController {
 
   @Get('sound/:name')
   sound(@Param('name') name, @Res() res) {
-    var soundPath = "/sound/" + name;
+    var soundPath = "/sounds/" + name;
     return res.sendFile(soundPath, { root: 'public' });
   }
 }

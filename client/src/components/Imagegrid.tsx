@@ -1,9 +1,11 @@
+import { Howl } from 'howler';
 import React, {useEffect, useState} from 'react';
 
-import { fetchNextImage, getImageUrl} from '../api';
+import { fetchNextImage, getImageUrl, getSoundUrl} from '../api';
 import { Image } from '../interfaces/interfaces';
 
 interface IProps{
+    audiofile: string,
     addPoints(arg0: number): void,
     submitData(arg0: string, arg1: any): void,
 }
@@ -32,7 +34,6 @@ const Imagegrid = (props: IProps) => {
         setMarked([false,false,false,false,false,false,false,false,false,false,false,false]);
     }
 
-
     const confirmImage = async () => {
         let pointSum = 0;
         points.forEach((p, index) => {
@@ -49,7 +50,7 @@ const Imagegrid = (props: IProps) => {
         })
 
         await props.submitData(imageName, answer);
-
+        playSound();
         props.addPoints(pointSum);
         getNextImage();
     }
@@ -60,6 +61,15 @@ const Imagegrid = (props: IProps) => {
         newMarked[index] = !newMarked[index];
         
         setMarked(newMarked);
+    }
+
+    const playSound = async () => {
+        let src:string = await getSoundUrl(props.audiofile)
+        const sound = new Howl({
+            src,
+            html5: true
+        })
+        sound.play();
     }
 
     return (

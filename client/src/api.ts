@@ -30,7 +30,7 @@ export async function register(prolific?: string): Promise<string>{
     return (token)
 }
 
-export async function fetchUserInfo(): Promise<UserInfo>{
+export async function fetchUserInfo(): Promise<{ studyProgress: number }>{
     //TODO: transmit from server only necessary data
     let user:any = await fetch(
         baseUrl + "user/userinfo",
@@ -46,9 +46,25 @@ export async function fetchUserInfo(): Promise<UserInfo>{
             return response
         })
     return {
-        studyProgress: user.studyProgress,
-        testgroup: user.testgroup
+        studyProgress: user.studyProgress
     };
+}
+
+export async function fetchAudiofile(): Promise<string>{
+    let name: string = await fetch(
+        baseUrl + "user/soundName",
+        {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer '+ getToken(),
+            }
+        }
+    )
+        .then(response => response.json())
+        .then(response => {
+            return response.audiofile
+        })
+    return name;
 }
 
 export async function submitResponse(data: Response) {

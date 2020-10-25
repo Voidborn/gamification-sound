@@ -1,0 +1,20 @@
+{
+  "sounds": [
+    {
+      "name": "AmajDrum.mp3",
+      "conditionDesc": "high arousal high pleasure"
+    },
+    {
+      "name": "AgressivePitch.mp3",
+      "conditionDesc": "high arousal low pleasure"
+    },
+    {
+      "name": "WurliV2.mp3",
+      "conditionDesc": "low arousal high pleasure"
+    },
+    {
+      "name": "CreakingNoise.mp3",
+      "conditionDesc": "low arousal low pleasure"
+    }
+  ]
+}

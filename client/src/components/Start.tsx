@@ -4,7 +4,7 @@ import { UserInfo } from '../interfaces/interfaces';
 import { getToken } from '../cookieManager';
 
 interface IProps {
-   updateParentState(arg0: UserInfo):void
+   startStudy():void
 }
 
 interface IState {
@@ -19,20 +19,15 @@ const Start = (props: IProps) => {
         let token = getToken();
         if (token && token !== "") {
             console.log("use Effect in Start does stuff");
-            login();
+            props.startStudy();
         }
     })
 
-    const login = async () => {
-        let user = await fetchUserInfo();
-        props.updateParentState(user);
-    }
 
     const registerUser = async () => {
         let token = (prolificId === "") ? await register() : await register(prolificId);
         if (token) {
-            let user = await fetchUserInfo();
-            props.updateParentState(user);
+            props.startStudy();
         }
       }
     

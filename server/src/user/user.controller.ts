@@ -34,4 +34,10 @@ export class UserController {
         console.log("next Image route " + userId)
         return this.userService.getNextImage(userId);
     }
+
+    @Get('soundName')
+    @UseGuards(new AuthGuard())
+    getSoundName(@User('userId') userId: string) {
+        return this.userService.getSoundName(userId);
+    }
 }

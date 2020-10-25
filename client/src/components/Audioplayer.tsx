@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { Howl } from "howler";
 import { getSoundUrl } from "../api";
 
-class Audioplayer extends Component {
-
-    soundPlay = (src: string) => {
+const Audioplayer = (props: {sound: string}) =>{
+    const soundPlay = (src: string) => {
         const sound = new Howl({
             src,
             html5: true
@@ -12,15 +11,23 @@ class Audioplayer extends Component {
         sound.play();
     }
 
-    RenderButtonSound = () => {
-        return <button onClick={() => this.soundPlay(getSoundUrl("AmajDrum.mp3"))}>BLA BLA </button>
+    const RenderButtonSound = () => {
+        return <div>
+            <button
+                onClick={() =>
+                    soundPlay(getSoundUrl(props.sound))
+                }
+                className="btn"
+            >
+                Play Sound 
+            </button>
+            </div>
     }
 
-    render() {
-        return (
-            <this.RenderButtonSound />
-        )
-    }
+    return (
+        <RenderButtonSound />
+    )
+    
 }
 
 export default Audioplayer;

@@ -5,25 +5,31 @@ import Start from './components/Start'
 import Imagerating from './components/Imagerating'
 import Questionnaire from './components/Questionnaire'
 import Audioplayer from './components/Audioplayer'
+import SoundCalibration from './components/SoundCalibration'
 
 import demographics from './questionnairesJSON/demographics'
 import music from './questionnairesJSON/music'
 import imi from './questionnairesJSON/imi'
 
 import { Response, UserInfo } from './interfaces/interfaces';
-import { fetchUserInfo, submitResponse } from './api';
+import { fetchUserInfo, submitResponse, fetchAudiofile } from './api';
 
 const App = () => {
   const [progress, setProgress] = useState(0);
-  const [testgroup, setTestgroup] = useState(0);
+  const [audiofile, setAudiofile] = useState("");
 
   const updateState = (user: UserInfo) => {
     setProgress(user.studyProgress);
-    setTestgroup(user.testgroup);
+    setAudiofile(user.audiofile);
+  }
+
+  const startStudy = async () => {
+    let user = await fetchUserInfo();
+    setProgress(user.studyProgress);
+    setAudiofile(await fetchAudiofile());
   }
 
   const submitData = async (questionId: string, answer: string) =>{
-    //TODO: Placeholder to be replaced by server message
     let response: Response = {
       studyProgress: progress,
       questionId: questionId,
@@ -35,28 +41,29 @@ const App = () => {
       console.error("Answer submission failed!");
     }
 
+    // pulls new User Info after trying to submit data,
+    // to check whether the study has progressed
     let newUserInfo = await fetchUserInfo();
     console.log(newUserInfo);
     if (newUserInfo.studyProgress !== progress) {
       setProgress(newUserInfo.studyProgress)
     }
 
-    return true;
+    return submissionSuccess;
   }
 
   const generateContent=() => {
     switch (progress) {
       case 0:
-        return <Start updateParentState={updateState}/>
+        return <Start startStudy={startStudy}/>
       case 1:
         return <Questionnaire surveyJson={demographics} submitData={submitData} questionId="demographics"/>
       case 2:
         return <Questionnaire surveyJson={music} submitData={submitData} questionId="music"/>
       case 3:
-        submitData("3", "no calibration done yet"); //TODO: sound calibration
-        return <div></div>
+        return <SoundCalibration submitData={submitData}/>
       case 4:
-        return <Imagerating submitData={submitData} />
+        return <Imagerating audiofile={audiofile} submitData={submitData} />
       case 5:
         return <Questionnaire surveyJson={imi} submitData={submitData} questionId="imi" />
       case 6:
@@ -69,7 +76,6 @@ const App = () => {
   return (
     <div className="App">
       {generateContent()}
-      <Audioplayer/>
     </div>
   );
   

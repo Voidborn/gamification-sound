@@ -6,6 +6,7 @@ import Imagegrid from './Imagegrid';
 import { getPointsCookie,setPointsCookie } from '../cookieManager';
 
 interface IProps{
+    audiofile: string,
     submitData(arg0:string,arg1:any): void,
 }
 
@@ -38,6 +39,7 @@ const Imagerating = (props: IProps) => {
         <div>
             <Sidebar points={points} total={100} current={50} pointHistory={pointHistory}/>
             <Imagegrid
+                audiofile={props.audiofile}
                 addPoints={addPoints}
                 submitData={props.submitData}
                 />
