@@ -2,6 +2,8 @@
   font-family: "Open Sans", sans-serif;
 }
 
+
+
 h3 {
   font-weight: bold;
 }
@@ -14,8 +16,20 @@ h1 {
   font-weight: bold;
 }
 
-/* SIDEBAR STYLES*/
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
+.flexcol{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* SIDEBAR STYLES*/
 .sidebar {
   /*sidebar properties*/
   height: 100%;
@@ -61,6 +75,7 @@ h1 {
   display: flex;
   flex-direction: column;
 }
+
 /* Progress bar */
 .progress{
   margin: 25px;
@@ -102,6 +117,7 @@ h1 {
   margin: 3px;
 }
 
+/* IMAGE GRID */
 .image-rating{
   margin-left: 300px;
   display:flex;
@@ -134,15 +150,55 @@ h1 {
   height:100px;
 }
 
+
+/* BUTTONS */
 .btn{
-  width:400px;
-  height:100px;
+  width:300px;
+  height:90px;
   background-color:#FFC107;
+  padding: 0;
+  border: none;
   border-radius: 20px;
 }
 
 
 .btn:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     transform: scaleX(1.1) scaleY(1.1);
+}
+
+.playbtn:hover {
+  transform: scaleX(1.1) scaleY(1.1);
+}
+
+.btnlabel {
+  font-size: xx-large;
+  font-weight: bold;
+  color: white;
+  margin: auto;
+}
+
+.surveybox {
+  max-width: 1080px;
+  margin: auto;
+  margin-top: 25px;
+}
+
+
+/* SurveyJS overwrite */
+.sv_complete_btn {
+  width:300px;
+  height:90px;
+  background-color: #FFC107 !important;
+  border-radius: 20px !important;
+  font-size: xx-large !important;
+}
+
+.sv_complete_btn:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: scaleX(1.1) scaleY(1.1);
+}
+
+.sv_main.sv_default_css {
+  background-color: white !important;
 }

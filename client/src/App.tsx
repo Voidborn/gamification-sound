@@ -4,7 +4,6 @@ import './App.css';
 import Start from './components/Start'
 import Imagerating from './components/Imagerating'
 import Questionnaire from './components/Questionnaire'
-import Audioplayer from './components/Audioplayer'
 import SoundCalibration from './components/SoundCalibration'
 
 import demographics from './questionnairesJSON/demographics'
@@ -17,11 +16,6 @@ import { fetchUserInfo, submitResponse, fetchAudiofile } from './api';
 const App = () => {
   const [progress, setProgress] = useState(0);
   const [audiofile, setAudiofile] = useState("");
-
-  const updateState = (user: UserInfo) => {
-    setProgress(user.studyProgress);
-    setAudiofile(user.audiofile);
-  }
 
   const startStudy = async () => {
     let user = await fetchUserInfo();
@@ -61,7 +55,7 @@ const App = () => {
       case 2:
         return <Questionnaire surveyJson={music} submitData={submitData} questionId="music"/>
       case 3:
-        return <SoundCalibration submitData={submitData}/>
+        return (audiofile !== "") ? <SoundCalibration submitData={submitData} /> : <div>{submitData("calibration","nosound")}</div>
       case 4:
         return <Imagerating audiofile={audiofile} submitData={submitData} />
       case 5:

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { register, fetchUserInfo } from '../api'
-import { UserInfo } from '../interfaces/interfaces';
+import { register} from '../api'
 import { getToken } from '../cookieManager';
 
 interface IProps {
@@ -32,18 +31,24 @@ const Start = (props: IProps) => {
       }
     
     return (
-        <div>
-            <div className="grid-row">
-                <div>
-                    <p>If you come from Prolific, please put your Prolific ID here:</p>
-                    <input value={prolificId} onChange={e=> setProlificId(e.target.value)} />
-                </div>
+        <div className="flexcol">
+            <div>
+                <p>If you come from Prolific, please put your Prolific ID here:</p>
             </div>
-            <p></p>
-            <div className="grid-row">
-                <div className="grid-col">
-                    <button className="btn" onClick={(event) => { registerUser() }}><h1>START STUDY</h1></button>
-                </div>
+            <div>
+                <input value={prolificId} onChange={e=> setProlificId(e.target.value)} />
+            </div>
+            <div>
+                <p></p>
+            </div>
+            <div className="grid-col">
+                <button 
+                    className="btn" 
+                    onClick={
+                        (event) => { registerUser() }
+                    }>
+                        <p className="btnlabel">START STUDY</p>
+                </button>
             </div>
         </div>
     )

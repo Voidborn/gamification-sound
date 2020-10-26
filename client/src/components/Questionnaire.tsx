@@ -20,7 +20,7 @@ const DemographicsQ = (props: IProps) => {
     }
 
     return (
-        <div className="grid-row">
+        <div className="flexrow surveybox">
             <Survey.Survey
                 json={props.surveyJson}
                 onComplete={sendDataToServer} />

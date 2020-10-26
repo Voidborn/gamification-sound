@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Howl } from "howler";
 import { getSoundUrl } from "../api";
+import playbutton from '../img/playbutton.svg';
 
 const Audioplayer = (props: {sound: string}) =>{
     const soundPlay = (src: string) => {
@@ -13,14 +14,14 @@ const Audioplayer = (props: {sound: string}) =>{
 
     const RenderButtonSound = () => {
         return <div>
-            <button
+            <img
+                src={playbutton}
+                className="playbtn"
+                width="100px"
                 onClick={() =>
                     soundPlay(getSoundUrl(props.sound))
                 }
-                className="btn"
-            >
-                Play Sound 
-            </button>
+            />
             </div>
     }
 

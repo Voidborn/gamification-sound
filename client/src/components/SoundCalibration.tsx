@@ -18,7 +18,7 @@ const SoundCalibration = (props: {submitData(arg0:string,arg1:any): void}) => {
     }
 
     return (
-        <div>
+        <div className="flexcol">
             <p>Listen to the following sound:</p>
             <Audioplayer sound = "CalibrationV2.mp3"/>
             <p>Set your device volume, so you can comfortably and clearly hear all 6 numbers.</p>
@@ -31,7 +31,7 @@ const SoundCalibration = (props: {submitData(arg0:string,arg1:any): void}) => {
             <button
                 className="btn"
                 onClick={(event) => { click() }}
-            >Continue</button>
+            ><p className="btnlabel">START STUDY</p></button>
         </div>
     )
 }
