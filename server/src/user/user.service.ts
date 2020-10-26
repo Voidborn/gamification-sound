@@ -109,7 +109,7 @@ export class UserService {
             return { audiofile: "" }
         }
         else {
-            let file = soundJson.sounds[user.testgroup];
+            let file = soundJson.sounds[user.testgroup - 1];
             console.log("selected the following soundfile " + file + " for group: " + user.testgroup);
             return { audiofile: file.name }
         }
