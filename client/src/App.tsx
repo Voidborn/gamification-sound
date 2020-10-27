@@ -5,12 +5,13 @@ import Start from './components/Start'
 import Imagerating from './components/Imagerating'
 import Questionnaire from './components/Questionnaire'
 import SoundCalibration from './components/SoundCalibration'
+import Footer from './components/Footer'
 
 import demographics from './questionnairesJSON/demographics'
 import music from './questionnairesJSON/music'
 import imi from './questionnairesJSON/imi'
 
-import { Response, UserInfo } from './interfaces/interfaces';
+import { Response } from './interfaces/interfaces';
 import { fetchUserInfo, submitResponse, fetchAudiofile } from './api';
 
 const App = () => {
@@ -61,15 +62,21 @@ const App = () => {
       case 5:
         return <Questionnaire surveyJson={imi} submitData={submitData} questionId="imi" />
       case 6:
-        return <div>
-          <p>THANK YOU FOR PARTICIPATING!</p>
-        </div>
+        return (
+          <div className="flexcol">
+            <div className="textbubble flexcol">
+              <p>Thank you for participating in this survey!</p>
+            </div>
+          </div>
+        )
+
     }
   }
 
   return (
     <div className="App">
       {generateContent()}
+      {(progress === 0 || progress === 6) ? null : <Footer total={6} current={progress}/>}
     </div>
   );
   

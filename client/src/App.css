@@ -2,7 +2,9 @@
   font-family: "Open Sans", sans-serif;
 }
 
-
+p {
+  font-size: larger;
+}
 
 h3 {
   font-weight: bold;
@@ -14,6 +16,15 @@ h2 {
 
 h1 {
   font-weight: bold;
+}
+
+.App{
+  margin-bottom:200px;
+}
+
+.smalltext {
+  font-size: x-small;
+  margin:5px;
 }
 
 .flexrow {
@@ -78,7 +89,8 @@ h1 {
 
 /* Progress bar */
 .progress{
-  margin: 25px;
+  margin: 20px;
+  margin-bottom:25px;
 }
 
 .progress-bar{
@@ -89,6 +101,7 @@ h1 {
 }
 
 .progress-text{
+
   text-align: center;
 }
 
@@ -148,6 +161,28 @@ h1 {
 .cell{
   width:100px;
   height:100px;
+}
+
+/* TEXTBOXES */
+.textbubble {
+  max-width: 1200px;
+  background-color:#E0F7FA;
+  border-radius: 20px;
+  padding: 40px;
+  padding-top:5px;
+  padding-bottom:5px;
+  margin:30px;
+}
+
+/* FOOTER */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #a0b6b9;
+  color: white;
+  text-align: center;
 }
 
 

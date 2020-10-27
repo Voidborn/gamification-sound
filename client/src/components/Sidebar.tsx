@@ -7,8 +7,6 @@ import Progressbar from './Progressbar'
 
 interface IProps {
     points: number,
-    total: number,
-    current: number,
     pointHistory: number[]
 }
 
@@ -16,7 +14,6 @@ function Sidebar(props: IProps)
 {
     return (
         <div className="sidebar">
-            <Progressbar total={props.total} current={props.current}/>
             <Pointbubble points={props.points}/>
             <div className="history">
                 <h3 className="history-element">History</h3>

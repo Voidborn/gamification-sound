@@ -37,7 +37,7 @@ const Imagerating = (props: IProps) => {
 
     return (
         <div>
-            <Sidebar points={points} total={100} current={50} pointHistory={pointHistory}/>
+            <Sidebar points={points} pointHistory={pointHistory}/>
             <Imagegrid
                 audiofile={props.audiofile}
                 addPoints={addPoints}
