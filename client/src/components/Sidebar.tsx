@@ -2,9 +2,6 @@ import React from 'react';
 
 import Pointbubble from './Pointbubble'
 
-
-import Progressbar from './Progressbar'
-
 interface IProps {
     points: number,
     pointHistory: number[]

@@ -1,5 +1,5 @@
 import {getToken, setToken, resetCookies} from './cookieManager'
-import {Image, UserInfo, Response} from './interfaces/interfaces'
+import {Image, Response} from './interfaces/interfaces'
 
 const baseUrl = "http://localhost:8080/";
 

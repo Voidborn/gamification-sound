@@ -2,6 +2,11 @@
   font-family: "Open Sans", sans-serif;
 }
 
+body{
+  min-width:800px;
+  min-height:920px;
+}
+
 p {
   font-size: larger;
 }
@@ -72,11 +77,13 @@ h1 {
 }
 
 .point-number{
-  font-size: 600%;
-  margin: 0px;
+  color:white;
+  font-size: 500%;
+  margin: 2px;
 }
 
 .point-text{
+  color:white;
   margin-top: -30px;
   font-size: 300%;
 }
@@ -143,15 +150,26 @@ h1 {
 
 .image-container{
   margin-top:75px;
+  height:50vh;
+  position:relative;
   display:flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
+.traffic-image{
+  z-index: 0;
+  position:absolute;
+  height: 100%;
+}
+
 .image-overlay{
-  width: 300px;
-  height: 400px;
+  width: 37.6vh;
+  position: absolute;
+  z-index: 100;
   justify-content: space-evenly;
+  display:flex;
+  flex-direction: column;
 }
 
 .grid-row{
@@ -162,8 +180,7 @@ h1 {
 }
 
 .cell{
-  width:100px;
-  height:100px;
+  height:12.5vh;
 }
 
 /* TEXTBOXES */

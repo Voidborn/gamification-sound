@@ -72,27 +72,39 @@ const Imagegrid = (props: IProps) => {
         sound.play();
     }
 
+    /** <div className="image-container">
+        <div>
+            <img className="traffic-image" src={imagePath} alt="trafficsign"/>
+        </div>
+        <div className="overlay image-overlay">
+            
+
+        </div>     
+    </div>  */
     return (
         <div className="image-rating">
             <div className="image-container">
-                <div>
-                    <img className="traffic-image" src={imagePath} alt="trafficsign"/>
-                </div>
-                <div className="overlay image-overlay">
+                <div className="image-overlay">
                     <div className="grid-row">
-                        {points.map((i, index) =>
-                            <img
-                                className="cell"
-                                key={index}
-                                src={marked[index] ? "img/selected-cell.svg" : "img/unselected-cell.svg"}
-                                alt="grid cell"
-                                onClick={(event) => markImage(index)}
-                            />
-                        )}
-                    </div>
+                            {points.map((i, index) =>
+                                <img
+                                    className="cell"
+                                    key={index}
+                                    src={marked[index] ? "img/selected-cell.svg" : "img/unselected-cell.svg"}
+                                    alt="grid cell"
+                                    onClick={(event) => markImage(index)}
+                                />
+                            )}
+                        </div>
+                </div>
+                <img
+                    id="traffic-image"
+                    className="traffic-image"
+                    src={imagePath}
+                    alt="trafficsign" />
 
-                </div>     
-            </div> 
+            </div>
+            
             <p className="smalltext" style={{textAlign:"center", color:"white"}}>{imageName}</p>
             <div className="image-container">
                 <button
