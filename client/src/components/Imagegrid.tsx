@@ -76,7 +76,7 @@ const Imagegrid = (props: IProps) => {
         <div className="image-rating">
             <div className="image-container">
                 <div>
-                    <img className="traffic-image" src={imagePath} alt="trafficsign" width="300" height="400" />
+                    <img className="traffic-image" src={imagePath} alt="trafficsign"/>
                 </div>
                 <div className="overlay image-overlay">
                     <div className="grid-row">
@@ -90,15 +90,17 @@ const Imagegrid = (props: IProps) => {
                             />
                         )}
                     </div>
+
                 </div>     
             </div> 
+            <p className="smalltext" style={{textAlign:"center", color:"white"}}>{imageName}</p>
             <div className="image-container">
                 <button
                     className="btn" onClick={(event) => {confirmImage()}}>
-                    <h1>NEXT IMAGE</h1>
+                    <p className="btnlabel">NEXT IMAGE</p>
                 </button>
             </div>
-            {imageName}
+
         </div>
     )
     

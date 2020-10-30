@@ -65,7 +65,13 @@ const App = () => {
         return (
           <div className="flexcol">
             <div className="textbubble flexcol">
-              <p>Thank you for participating in this survey!</p>
+              <p style={{textAlign: "center"}}>
+                Thank you for participating in this survey!
+                <br />
+                <br/>
+                If you have any questions or remarks, contact us at maximilian.altmeyer(at)dfki.de.
+              </p>
+              
             </div>
           </div>
         )
@@ -76,7 +82,7 @@ const App = () => {
   return (
     <div className="App">
       {generateContent()}
-      {(progress === 0 || progress === 6) ? null : <Footer total={6} current={progress}/>}
+      {<Footer total={6} current={progress}/>}
     </div>
   );
   

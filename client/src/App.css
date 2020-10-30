@@ -89,15 +89,18 @@ h1 {
 
 /* Progress bar */
 .progress{
-  margin: 20px;
+  margin: auto;
   margin-bottom:25px;
+  max-width:1200px;
 }
 
 .progress-bar{
   background-color: white;
   border-radius: 10px;
   height:20 px;
-  margin-top: 5px;
+  margin: 5px;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 .progress-text{
@@ -168,10 +171,15 @@ h1 {
   max-width: 1200px;
   background-color:#E0F7FA;
   border-radius: 20px;
-  padding: 40px;
+
   padding-top:5px;
   padding-bottom:5px;
   margin:30px;
+}
+
+.bubblecontent{
+  margin: 40px;
+  margin-top: 20px;
 }
 
 /* FOOTER */
