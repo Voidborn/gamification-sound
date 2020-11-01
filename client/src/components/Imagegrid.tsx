@@ -43,11 +43,11 @@ const Imagegrid = (props: IProps) => {
         })
 
 
-        let answer = JSON.stringify({
+        let answer = {
             pointSum: pointSum,
             points: points,
             marked: marked
-        })
+        }
 
         await props.submitData(imageName, answer);
         playSound();
@@ -82,7 +82,17 @@ const Imagegrid = (props: IProps) => {
         </div>     
     </div>  */
     return (
-        <div className="image-rating">
+        <div className="image-rating flexcol">
+            <div className="textbubble flexcol">
+                <div className="bubblecontent" style={{marginBottom:"10px"}}>
+                    <p style={{textAlign:"center"}}>
+                        Please select all squares which contain <b>traffic signs</b> or <b>parts of traffic signs</b>.
+                        <br />
+                        Do <b>not</b> select traffic lights or other types of signs!
+                    </p>
+                </div>
+            </div>
+
             <div className="image-container">
                 <div className="image-overlay">
                     <div className="grid-row">

@@ -16,4 +16,11 @@ export class ResponsesController {
     createResponse(@User('userId') userId: string, @Body() data: ResponseDTO) { //returns<{ studyProgress: number, accepted: boolean }> 
         return this.resService.create(userId, data);
     }
+
+
+    @Get('userHistory')
+    @UseGuards(new AuthGuard())
+    getUserHistory(@User('userId') userId: string) {
+        return this.resService.getHistory(userId);
+    }
 }

@@ -67,6 +67,42 @@ export async function fetchAudiofile(): Promise<string>{
     return name;
 }
 
+
+export async function fetchHistory(): Promise<number[]>{
+
+    interface history {
+        points: number,
+        timestamp: number
+    }
+
+    let points: number[] = await fetch(
+        baseUrl + "response/userHistory", {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + getToken(),
+            }
+        }
+    )
+        .then(response => response.json())
+        .then(response => {
+            let res: history[] = response;
+            console.log(res);
+            try {
+                res.sort(
+                    function (a:any, b:any) {
+                        { return (a.timestamp - b.timestamp) }
+                    }
+                )
+            }
+            catch(error) { console.log(error) }
+
+            return res.map(element => {
+                return (element.points)
+            });
+        })
+    return points;
+}
+
 export async function submitResponse(data: Response) {
     console.log("wants to submit", JSON.stringify(data));
     let submitSuccessful = await fetch(

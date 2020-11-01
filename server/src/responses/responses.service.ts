@@ -5,6 +5,8 @@ import { Repository } from 'typeorm';
 import { ResponseDTO } from './responses.dto';
 import { ResponseEntity } from './responses.entity';
 
+import progressStates from '../jsonFiles/progressStates.json'
+
 @Injectable()
 export class ResponsesService {
     constructor(
@@ -37,5 +39,14 @@ export class ResponsesService {
         }
         //returns whether the entry was accepted
         return { accepted: accepted };
+    }
+
+    async getHistory(userId: string) {
+        let history: number[] = [];
+        const response = await this.responseRepository.find({ where: { userId: userId, studyProgress: progressStates.imageRating } })
+        let result = response.map(element => {
+            return { "points": JSON.parse(element.answer).pointSum, "timestamp": new Date(element.responseTime).getTime() };
+        })
+        return result;
     }
 }

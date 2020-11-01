@@ -6,6 +6,7 @@ import Imagerating from './components/Imagerating'
 import Questionnaire from './components/Questionnaire'
 import SoundCalibration from './components/SoundCalibration'
 import Footer from './components/Footer'
+import Endcard from './components/Endcard'
 
 import demographics from './questionnairesJSON/demographics'
 import music from './questionnairesJSON/music'
@@ -62,19 +63,7 @@ const App = () => {
       case 5:
         return <Questionnaire surveyJson={imi} submitData={submitData} questionId="imi" />
       case 6:
-        return (
-          <div className="flexcol">
-            <div className="textbubble flexcol">
-              <p style={{textAlign: "center"}}>
-                Thank you for participating in this survey!
-                <br />
-                <br/>
-                If you have any questions or remarks, contact us at maximilian.altmeyer(at)dfki.de.
-              </p>
-              
-            </div>
-          </div>
-        )
+        return <Endcard />
 
     }
   }

@@ -48,7 +48,7 @@ const Start = (props: IProps) => {
                         We thank you for your time and participation.
                     </p>
 
-                    <label style={error?{fontWeight: "bold", color:"red" }:{}}>
+                    <label style={(!dataProtection&&error)?{fontWeight: "bold", color:"red" }:{}}>
                         <input style={{ marginRight: "10px"}} type="checkbox" defaultChecked={dataProtection} onChange={(e) => setDataProtection(!dataProtection)} />
                         I have read and understood the information on data prodection and the participation information and agree that my data may be used anonymously for scientific research purposes.
                     </label>
@@ -60,20 +60,20 @@ const Start = (props: IProps) => {
                         Please make sure to turn off any other audio sources (such as music, podcasts or videos) while completing the survey.
                     </p>
 
-                    <label style={error?{fontWeight: "bold", color:"red" }:{}}>
+                    <label style={(!audioCheck && error)?{fontWeight: "bold", color:"red" }:{}}>
                         <input style={{ marginRight: "10px"}} type="checkbox" defaultChecked={audioCheck} onChange={(e) => setAudioCheck(!audioCheck)} />
                         I confirm that I have a working audio output and have turned off all other audio sources.
                     </label>
                     <br />
+                    <br />
                     <br/>
                     <p style={{ textAlign: "center" }}>
-                        If you come from Prolific, please enter your Prolific ID here:
+                        Please enter your Prolific ID here:
                         <input
                             value={prolificId}
                             style={{marginLeft:"10px"}}
                             onChange={e => setProlificId(e.target.value)} />
                     </p>
-
                 </div>
             </div>
             <div>

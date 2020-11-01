@@ -24,7 +24,7 @@ h1 {
 }
 
 .App{
-  margin-bottom:200px;
+  margin-bottom: 200px;
 }
 
 .smalltext {
@@ -149,7 +149,7 @@ h1 {
 }
 
 .image-container{
-  margin-top:75px;
+  margin-top:10px;
   height:50vh;
   position:relative;
   display:flex;

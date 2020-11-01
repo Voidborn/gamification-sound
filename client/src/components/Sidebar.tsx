@@ -16,7 +16,7 @@ function Sidebar(props: IProps)
                 <h3 className="history-element">History</h3>
                 {(props.pointHistory.slice().reverse()).map((e, index) => 
                     (index < 15) ?
-                        <p className="history-element">{e} Points</p>
+                        <p className="history-element"><b>{e}</b><b>Points</b></p>
                         :
                         null
                 )}

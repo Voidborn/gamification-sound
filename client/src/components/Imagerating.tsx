@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import Sidebar from './Sidebar';
 import Imagegrid from './Imagegrid';
 
-import { getPointsCookie,setPointsCookie } from '../cookieManager';
+import { fetchHistory } from '../api';
 
 interface IProps{
     audiofile: string,
@@ -12,27 +12,34 @@ interface IProps{
 
 const Imagerating = (props: IProps) => {
     const [points, setPoints] = useState<number>(0);
-    const [pointHistory, setHistory] = useState<number[]>([]);
+    const [pointHistory, setPointHistory] = useState<number[]>([]);
+    const [dataChecked, setDataChecked] = useState(false);
     
+    const refreshDataFromServer = async () => {
+        let h = await(fetchHistory());
+        setPointHistory(h);
+
+        let sum = pointHistory.reduce(function (a, b) { return a + b; }, 0);
+
+        setPoints(sum)
+
+        setDataChecked(true);
+    }
+
     useEffect(
-        () =>{
-            if (points === 0) {
-                let cookiepoints = parseInt(getPointsCookie());
-                if (cookiepoints) {
-                    setPoints(cookiepoints)
-                }
+        () => {
+            if (dataChecked === false) {
+                refreshDataFromServer();
             }
-        },[points]
+        },[refreshDataFromServer,dataChecked]
     )
 
     const addPoints = (p: number) => {
         const sum: number = points + p;
-        console.log(sum);
-        setPointsCookie(sum);
         setPoints(sum);
         let newHistory = pointHistory.slice();
         newHistory.push(p);
-        setHistory(newHistory);
+        setPointHistory(newHistory);
     }
 
     return (
