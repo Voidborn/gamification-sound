@@ -13,10 +13,10 @@ function Sidebar(props: IProps)
         <div className="sidebar">
             <Pointbubble points={props.points}/>
             <div className="history">
-                <h3 className="history-element">History</h3>
+                <h2 className="history-element">Point History</h2>
                 {(props.pointHistory.slice().reverse()).map((e, index) => 
-                    (index < 15) ?
-                        <p className="history-element" key={index}><b>{e}</b><b>Points</b></p>
+                    (index < 10) ?
+                        <p className="history-element" style={{opacity:(10-index)/10}}key={index}>{"+" + e + " Points"}</p>
                         :
                         null
                 )}

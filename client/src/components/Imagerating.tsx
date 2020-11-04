@@ -23,12 +23,10 @@ const Imagerating = (props: IProps) => {
                 setPointHistory(h);
         
                 let sum = pointHistory.reduce(function (a, b) { return a + b; }, 0);
-        
                 setPoints(sum)
         
                 setDataChecked(true);
             }
-
 
             if (dataChecked === false) {
                 refreshDataFromServer();
@@ -39,8 +37,10 @@ const Imagerating = (props: IProps) => {
     const addPoints = (p: number) => {
         const sum: number = points + p;
         setPoints(sum);
+
         let newHistory = pointHistory.slice();
         newHistory.push(p);
+        
         setPointHistory(newHistory);
     }
 

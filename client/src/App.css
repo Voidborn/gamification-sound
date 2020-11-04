@@ -134,9 +134,13 @@ h1 {
   margin: 25px;
 }
 
+
+
 .history-element{
   display: flex;
   justify-content: space-around;
+  font-weight: bold;
+  color: darkslateblue;
   margin: 3px;
 }
 
@@ -164,7 +168,7 @@ h1 {
 }
 
 .image-overlay{
-  width: 37.6vh;
+  width: 37.51vh;
   position: absolute;
   z-index: 100;
   justify-content: space-evenly;
@@ -181,15 +185,24 @@ h1 {
 
 .cell{
   height:12.5vh;
+  width:12.5vh;
   cursor: pointer;
+}
+
+.pointCell{
+  position:absolute;
+  text-align:center;
+  pointer-events: none;
+  margin:12%;
+  color:white;
+  font-weight: bolder;
+  font-size: xx-large;
 }
 
 /* TEXTBOXES */
 .textbubble {
-  max-width: 1200px;
   background-color:#E0F7FA;
   border-radius: 20px;
-
   padding-top:5px;
   padding-bottom:5px;
   margin:30px;

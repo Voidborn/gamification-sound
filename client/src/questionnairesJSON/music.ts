@@ -212,7 +212,8 @@ var data = {
       ],
       "title": "Music demographics"
      }
-    ]
+    ],
+    "showCompletedPage":false
 }
    
 export default data;

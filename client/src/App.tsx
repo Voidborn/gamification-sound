@@ -11,6 +11,7 @@ import Endcard from './components/Endcard'
 import demographics from './questionnairesJSON/demographics'
 import music from './questionnairesJSON/music'
 import imi from './questionnairesJSON/imi'
+import pei from './questionnairesJSON/pei'
 import sam from './questionnairesJSON/sam'
 
 import { Response } from './interfaces/interfaces';
@@ -76,6 +77,8 @@ const App = () => {
       case 6:
         return <Questionnaire surveyJson={imi} submitData={submitData} questionId="imi" />
       case 7:
+        return <Questionnaire surveyJson={pei} submitData={submitData} questionId="pei" />
+      case 8:
         return <Endcard />
 
     }
@@ -84,7 +87,7 @@ const App = () => {
   return (
     <div className="App">
       {generateContent()}
-      {<Footer total={7} current={progress} imageProgress={imageProgress}/>}
+      {<Footer total={8} current={progress} imageProgress={imageProgress}/>}
     </div>
   );
   

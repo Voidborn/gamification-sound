@@ -42,6 +42,7 @@ const Imagegrid = (props: IProps) => {
             }
         })
 
+        pointSum = Math.max(pointSum, 0);
 
         let answer = {
             pointSum: pointSum,
@@ -98,16 +99,21 @@ const Imagegrid = (props: IProps) => {
             <div className="image-container">
                 <div className="image-overlay">
                     <div className="grid-row">
-                            {points.map((i, index) =>
+                        {points.map((i, index) =>
+                            <div
+                                key={index}
+                                className="cell"
+                                onClick={(event) => markImage(index)}
+                            >
+                                <p className="pointCell">{i}</p>
                                 <img
                                     className="cell"
-                                    key={index}
                                     src={marked[index] ? "img/selected-cell.svg" : "img/unselected-cell.svg"}
                                     alt="grid cell"
-                                    onClick={(event) => markImage(index)}
                                 />
+                            </div>    
                             )}
-                        </div>
+                    </div>
                 </div>
                 <img
                     id="traffic-image"

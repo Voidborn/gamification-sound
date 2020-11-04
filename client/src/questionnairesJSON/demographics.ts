@@ -36,7 +36,8 @@ var data = {
                 "isRequired": true,
         }],
         "title": "Demographics"
-        }]
+    }],
+    "showCompletedPage":false
   }
   
 export default data
