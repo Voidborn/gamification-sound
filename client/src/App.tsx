@@ -84,7 +84,7 @@ const App = () => {
   return (
     <div className="App">
       {generateContent()}
-      {<Footer total={6} current={progress} imageProgress={imageProgress}/>}
+      {<Footer total={7} current={progress} imageProgress={imageProgress}/>}
     </div>
   );
   

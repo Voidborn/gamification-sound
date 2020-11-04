@@ -24,7 +24,7 @@ h1 {
 }
 
 .App{
-  margin-bottom: 200px;
+  margin-bottom: 150px;
 }
 
 .smalltext {
@@ -181,6 +181,7 @@ h1 {
 
 .cell{
   height:12.5vh;
+  cursor: pointer;
 }
 
 /* TEXTBOXES */

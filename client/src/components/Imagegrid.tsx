@@ -50,7 +50,9 @@ const Imagegrid = (props: IProps) => {
         }
 
         await props.submitData(imageName, answer);
-        playSound();
+        if (props.audiofile !== "") {
+            playSound();
+        }
         props.addPoints(pointSum);
         getNextImage();
     }
