@@ -15,23 +15,25 @@ const Imagerating = (props: IProps) => {
     const [pointHistory, setPointHistory] = useState<number[]>([]);
     const [dataChecked, setDataChecked] = useState(false);
     
-    const refreshDataFromServer = async () => {
-        let h = await(fetchHistory());
-        setPointHistory(h);
-
-        let sum = pointHistory.reduce(function (a, b) { return a + b; }, 0);
-
-        setPoints(sum)
-
-        setDataChecked(true);
-    }
 
     useEffect(
         () => {
+            const refreshDataFromServer = async () => {
+                let h = await(fetchHistory());
+                setPointHistory(h);
+        
+                let sum = pointHistory.reduce(function (a, b) { return a + b; }, 0);
+        
+                setPoints(sum)
+        
+                setDataChecked(true);
+            }
+
+
             if (dataChecked === false) {
                 refreshDataFromServer();
             }
-        },[refreshDataFromServer,dataChecked]
+        },[dataChecked, pointHistory]
     )
 
     const addPoints = (p: number) => {

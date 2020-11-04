@@ -30,7 +30,11 @@ export async function register(prolific?: string): Promise<string>{
     return (token)
 }
 
-export async function fetchUserInfo(): Promise<{ studyProgress: number }>{
+export async function fetchUserInfo(): Promise<{
+    studyProgress: number,
+    totalImages: any,
+    currentImage: number
+}>{
     //TODO: transmit from server only necessary data
     let user:any = await fetch(
         baseUrl + "user/userinfo",
@@ -46,7 +50,11 @@ export async function fetchUserInfo(): Promise<{ studyProgress: number }>{
             return response
         })
     return {
-        studyProgress: user.studyProgress
+        studyProgress: user.studyProgress,
+        //Reads how many images total need to be rated...
+        totalImages: JSON.parse(user.imageOrder).array.length,
+        //...and how many have been rated. Since the current Image is the array index, we have to increment!
+        currentImage: user.currentImage + 1
     };
 }
 
@@ -90,7 +98,7 @@ export async function fetchHistory(): Promise<number[]>{
             try {
                 res.sort(
                     function (a:any, b:any) {
-                        { return (a.timestamp - b.timestamp) }
+                        return (a.timestamp - b.timestamp);
                     }
                 )
             }

@@ -97,7 +97,7 @@ h1 {
 /* Progress bar */
 .progress{
   margin: auto;
-  margin-bottom:25px;
+  margin-bottom:15px;
   max-width:1200px;
 }
 
@@ -111,8 +111,8 @@ h1 {
 }
 
 .progress-text{
-
   text-align: center;
+  margin: 10px;
 }
 
 .progress-done{
@@ -219,6 +219,7 @@ h1 {
   padding: 0;
   border: none;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 
@@ -229,6 +230,7 @@ h1 {
 
 .playbtn:hover {
   transform: scaleX(1.1) scaleY(1.1);
+  cursor: pointer;
 }
 
 .btnlabel {

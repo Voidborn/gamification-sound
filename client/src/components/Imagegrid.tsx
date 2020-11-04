@@ -88,7 +88,7 @@ const Imagegrid = (props: IProps) => {
                     <p style={{textAlign:"center"}}>
                         Please select all squares which contain <b>traffic signs</b> or <b>parts of traffic signs</b>.
                         <br />
-                        Do <b>not</b> select traffic lights or other types of signs!
+                        <i>Do not select traffic lights or other types of signs!</i>
                     </p>
                 </div>
             </div>
