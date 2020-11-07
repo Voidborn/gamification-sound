@@ -5,6 +5,7 @@ import Audioplayer from './Audioplayer';
 const SoundCalibration = (props: {submitData(arg0:string,arg1:any): void}) => {
     const [calibrationNumber, setCalibrationNumber] = useState("");
     const [badInput, setBadInput] = useState("");
+    
     const click = () => {
         if (calibrationNumber === "516971") {
             props.submitData("calibration", calibrationNumber);

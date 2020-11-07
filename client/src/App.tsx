@@ -21,15 +21,19 @@ const App = () => {
   const [progress, setProgress] = useState(0);
   const [audiofile, setAudiofile] = useState("");
   const [imageProgress, setImageProgress] = useState([0, 0]); // [0]: current , [1]: total
+  const [loading, setLoading] = useState(true);
+
 
   const startStudy = async () => {
     let user = await fetchUserInfo();
     setProgress(user.studyProgress);
     setAudiofile(await fetchAudiofile());
     setImageProgress([user.currentImage, user.totalImages]);
+    setLoading(false);
   }
 
-  const submitData = async (questionId: string, answer: string) =>{
+  const submitData = async (questionId: string, answer: string) => {
+    setLoading(true);
     let response: Response = {
       studyProgress: progress,
       questionId: questionId,
@@ -51,11 +55,13 @@ const App = () => {
     if (newUserInfo.currentImage !== imageProgress[0]) {
       setImageProgress([newUserInfo.currentImage, newUserInfo.totalImages]);
     }
-
+    setLoading(false);
     return submissionSuccess;
   }
 
-  const generateContent=() => {
+  const generateContent = () => {
+    console.log("current progress: " + progress)
+
     switch (progress) {
       case 0:
         return <Start startStudy={startStudy}/>
@@ -64,12 +70,16 @@ const App = () => {
       case 2:
         return <Questionnaire surveyJson={music} submitData={submitData} questionId="music"/>
       case 3:
-        if (audiofile !== "") {
-          return <SoundCalibration submitData={submitData}/>
-        } else {
-          submitData("calibration", "nosound");
-          return <div></div>
+        if (!loading) {
+          if (audiofile !== "") {
+            return <SoundCalibration submitData={submitData} />
+          } else {
+            submitData("calibration", "nosound");
+            console.log("no sound!");
+            return <div></div>
+          }
         }
+        break;
       case 4:
         return <Imagerating audiofile={audiofile} submitData={submitData} />
       case 5: 

@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Howl } from "howler";
 import { getSoundUrl } from "../api";
 import playbutton from '../img/playbutton.svg';
 
-const Audioplayer = (props: {sound: string}) =>{
-    const soundPlay = (src: string) => {
-        const sound = new Howl({
-            src,
-            html5: true
-        })
-        sound.play();
+const Audioplayer = (props: { sound: string }) => {
+    const [src] = useState(getSoundUrl(props.sound));
+    const [sound] = useState(new Howl({
+        src,
+        html5: true
+    }))
+
+    const soundPlay = () => {
+        if (!sound.playing()) {
+            sound.play();
+        } else {
+            sound.stop();
+            sound.play();
+        }
     }
 
     const RenderButtonSound = () => {
@@ -20,7 +27,7 @@ const Audioplayer = (props: {sound: string}) =>{
                 width="100px"
                 alt="PLAY"
                 onClick={() =>
-                    soundPlay(getSoundUrl(props.sound))
+                    soundPlay()
                 }
             />
             </div>

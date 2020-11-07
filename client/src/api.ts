@@ -150,10 +150,10 @@ export async function fetchNextImage(): Promise<Image>{
     return (image);
 }
 
-export function getImageUrl(name: string){
+export function getImageUrl(name: string):string{
     return baseUrl + "img/" + name;
 }
 
-export function getSoundUrl(name: string) {
+export function getSoundUrl(name: string):string{
     return baseUrl + "sound/" + name;
 }
