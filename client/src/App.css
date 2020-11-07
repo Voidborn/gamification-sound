@@ -67,29 +67,74 @@ h1 {
 .pointbubble {
   display: flex;
   justify-content: space-around;
-  margin:25px;
+  margin: 25px;
+  height: 25vh;
+}
+
+.bubbleimg{
+  width:22vh;
+  margin-top:2vh;
+}
+
+.bubbleanimation{
+  animation-name: zoom;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes zoom {
+  0% {width: 22vh; margin-top:2vh;}
+  50% {width: 25vh; margin-top:0}
+  100% {width: 22vh; margin-top:2vh;}
 }
 
 .points{
-  margin-top: 40px;
+  margin-top: 5.5vh;
   justify-content: center;
   text-align: center;
 }
 
 .point-number{
   color:white;
-  font-size: 500%;
+  font-size: 8vh;
   margin: 2px;
+  margin-top:0vh;
+}
+.pointanimation{
+  animation-name: pointZoom;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes pointZoom{
+  0% {font-size:8vh;}
+  50% {font-size: 11vh; margin-top: -2.1vh;}
+  100% {font-size:8vh;}
 }
 
 .point-text{
   color:white;
-  margin-top: -30px;
-  font-size: 300%;
+  margin-top: -3vh;
+  font-size: 4vh;
+}
+
+.pointtextanimation{
+  animation-name: textZoom;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes textZoom{
+  0% {font-size:4vh;}
+  50% {font-size: 5vh; margin-top: -5vh;}
+  100% {font-size:4vh;}
 }
 
 .overlay {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
 }
@@ -133,8 +178,6 @@ h1 {
   justify-content: space-around;
   margin: 25px;
 }
-
-
 
 .history-element{
   display: flex;
@@ -193,10 +236,10 @@ h1 {
   position:absolute;
   text-align:center;
   pointer-events: none;
-  margin:12%;
+  margin:8%;
   color:white;
   font-weight: bolder;
-  font-size: xx-large;
+  font-size: 4.5vh;
 }
 
 /* TEXTBOXES */
@@ -210,7 +253,7 @@ h1 {
 
 .bubblecontent{
   margin: 40px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 /* FOOTER */

@@ -7,11 +7,11 @@ interface IProps {
     pointHistory: number[]
 }
 
-function Sidebar(props: IProps)
+const Sidebar = (props: IProps) =>
 {
     return (
         <div className="sidebar">
-            <Pointbubble points={props.points}/>
+            <Pointbubble points={Math.round(props.points)}/>
             <div className="history">
                 <h2 className="history-element">Point History</h2>
                 {(props.pointHistory.slice().reverse()).map((e, index) => 
