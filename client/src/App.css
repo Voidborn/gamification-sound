@@ -84,9 +84,8 @@ h1 {
 }
 
 @keyframes zoom {
-  0% {width: 22vh; margin-top:2vh;}
-  50% {width: 25vh; margin-top:0}
-  100% {width: 22vh; margin-top:2vh;}
+  40% {width: 25vh; margin-top:0}
+  80% {width: 22vh; margin-top:2vh;}
 }
 
 .points{
@@ -96,7 +95,7 @@ h1 {
 }
 
 .point-number{
-  color:white;
+  color: darkslateblue;
   font-size: 8vh;
   margin: 2px;
   margin-top:0vh;
@@ -109,13 +108,11 @@ h1 {
 }
 
 @keyframes pointZoom{
-  0% {font-size:8vh;}
-  50% {font-size: 11vh; margin-top: -2.1vh;}
-  100% {font-size:8vh;}
+  50% {font-size: 11vh; margin-top: -2.6vh; color: darkslategray}
 }
 
 .point-text{
-  color:white;
+  color: darkslateblue;
   margin-top: -3vh;
   font-size: 4vh;
 }
@@ -128,9 +125,7 @@ h1 {
 }
 
 @keyframes textZoom{
-  0% {font-size:4vh;}
-  50% {font-size: 5vh; margin-top: -5vh;}
-  100% {font-size:4vh;}
+  50% {font-size: 5.5vh; margin-top: -4vh;}
 }
 
 .overlay {
