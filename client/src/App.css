@@ -100,6 +100,7 @@ h1 {
   margin: 2px;
   margin-top:0vh;
 }
+
 .pointanimation{
   animation-name: pointZoom;
   animation-duration: 1s;
@@ -227,14 +228,38 @@ h1 {
   cursor: pointer;
 }
 
+.cellAnim{
+  animation-name: cellKeyframes;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes cellKeyframes{
+  10% {opacity: 0}
+  100% {opacity: 0}
+}
+
 .pointCell{
   position:absolute;
   text-align:center;
   pointer-events: none;
-  margin:8%;
+  margin:3vh;
   color:white;
   font-weight: bolder;
-  font-size: 4.5vh;
+  font-size: 5vh;
+  opacity: 0;
+}
+
+.cellNumAnim{
+  animation-name: cellNumKeyframes;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+}
+
+@keyframes cellNumKeyframes{
+  10% {opacity: 1; font-size:7vh; margin:1.5vh;}
+  100% {opacity: 1;}
 }
 
 /* TEXTBOXES */

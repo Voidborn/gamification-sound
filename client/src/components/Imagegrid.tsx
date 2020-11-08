@@ -11,13 +11,16 @@ interface IProps{
 }
 
 const Imagegrid = (props: IProps) => {
-    // TODO: initial server request
     const [imageName, setImageName] = useState("");
     const [imagePath, setImagePath] = useState("");
     const [points, setPoints] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     const [marked, setMarked] = useState([false,false,false,false,false,false,false,false,false,false,false,false])
     const [imageLoaded, setImageLoaded] = useState(false);
     
+    //animation class variables:
+    const [numberAnim, setNumberAnim] = useState("");
+    const [cellAnim, setCellAnim] = useState("");
+
     //kind of a ComponentDidMount function to load initial image
     useEffect(() => {
         if (!imageLoaded) {
@@ -25,6 +28,17 @@ const Imagegrid = (props: IProps) => {
             setImageLoaded(true);
         }
     },[imageLoaded])
+
+
+    const startAnimations= () => {
+        setNumberAnim("cellNumAnim");
+        setCellAnim("cellAnim");
+    }
+
+    const endAnimations = () => {
+        setNumberAnim("");
+        setCellAnim("");
+    }
 
     const getNextImage = async () => {
         let newImage: Image = await fetchNextImage();
@@ -50,12 +64,21 @@ const Imagegrid = (props: IProps) => {
             marked: marked
         }
 
-        await props.submitData(imageName, answer);
+
         if (props.audiofile !== "" && pointSum !== 0) {
             playSound();
         }
+
         props.addPoints(pointSum);
-        getNextImage();
+        startAnimations();
+
+
+        setTimeout(() => {
+
+            getNextImage();
+            endAnimations();
+        },2000)
+        await props.submitData(imageName, answer);
     }
 
     const markImage = (index: number): void => {
@@ -105,9 +128,11 @@ const Imagegrid = (props: IProps) => {
                                 className="cell"
                                 onClick={(event) => markImage(index)}
                             >
-                                <p className="pointCell">{i}</p>
+                                <p
+                                    className={`pointCell ${marked[index] ? numberAnim : ""}`}
+                                    style={(i<0)?{color:"darkred"}:{color:"darkslateblue"}}>{i}</p>
                                 <img
-                                    className="cell"
+                                    className={`cell ${marked[index]?"":cellAnim}`}
                                     src={marked[index] ? "img/selected-cell.svg" : "img/unselected-cell.svg"}
                                     alt="grid cell"
                                 />
