@@ -72,13 +72,14 @@ const Imagegrid = (props: IProps) => {
         props.addPoints(pointSum);
         startAnimations();
 
+        console.log()
 
-        setTimeout(() => {
-
+        setTimeout(async () => {
             getNextImage();
             endAnimations();
+            await props.submitData(imageName, answer);
         },2000)
-        await props.submitData(imageName, answer);
+
     }
 
     const markImage = (index: number): void => {
@@ -98,15 +99,6 @@ const Imagegrid = (props: IProps) => {
         sound.play();
     }
 
-    /** <div className="image-container">
-        <div>
-            <img className="traffic-image" src={imagePath} alt="trafficsign"/>
-        </div>
-        <div className="overlay image-overlay">
-            
-
-        </div>     
-    </div>  */
     return (
         <div className="image-rating flexcol">
             <div className="textbubble flexcol">

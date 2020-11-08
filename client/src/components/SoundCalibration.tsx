@@ -20,15 +20,33 @@ const SoundCalibration = (props: {submitData(arg0:string,arg1:any): void}) => {
 
     return (
         <div className="flexcol">
-            <p>Listen to the following sound:</p>
-            <Audioplayer sound = "CalibrationV2.mp3"/>
-            <p>Set your device volume, so you can comfortably and clearly hear all 6 numbers.</p>
-            <input 
+            <div className="textbubble flexcol">
+                <div
+                    className="bubblecontent"
+                    style={{ marginBottom: "10px" }}>
+                    <p>Listen to the following six numbers:</p>
+                </div>
+                <Audioplayer sound="CalibrationV2.mp3" />
+                <div
+                    className="bubblecontent"
+                    style={{ marginBottom: "10px" }}>
+                    <p style={{textAlign:"center"}}>
+                        Set your device volume, so you can comfortably and clearly hear all 6 numbers. 
+                        <br />
+                        The first number should not be too loud and the last number should still be hearable.
+                    </p>
+                </div>
+                Please enter the number here:
+                <input 
                 type="number" 
                 value={calibrationNumber} 
                 onChange={e => setCalibrationNumber(e.target.value)}
-            />
-            <p>{badInput}</p>
+                />
+                <p style={{ color: "darkred", fontWeight:"bold"}}>{badInput}</p>
+            </div>
+
+            
+
             <button
                 className="btn"
                 onClick={(event) => { click() }}
