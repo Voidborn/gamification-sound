@@ -31,7 +31,6 @@ export class UserController {
     @Get('nextImage')
     @UseGuards(new AuthGuard())
     getNextImage(@User('userId') userId: string) {
-        console.log("next Image route " + userId)
         return this.userService.getNextImage(userId);
     }
 

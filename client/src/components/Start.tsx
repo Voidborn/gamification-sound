@@ -19,7 +19,6 @@ const Start = (props: IProps) => {
     useEffect(() => {
         let token = getToken();
         if (token && token !== "") {
-            console.log("use Effect in Start does stuff");
             props.startStudy();
         }
     })

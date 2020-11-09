@@ -1,7 +1,10 @@
 {
   "demographics": 1,
-  "musicDemographics": 2,
-  "soundCalibration": 3,
-  "imageRating": 4,
-  "questionnaire1": 5
+  "music": 2,
+  "calibration": 3,
+  "tutorial": 4,
+  "imageRating": 5,
+  "sam": 6,
+  "imi": 7,
+  "pei": 8
 }

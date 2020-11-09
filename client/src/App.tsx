@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 
 import Start from './components/Start'
+import Tutorial from './components/Tutorial'
 import Imagerating from './components/Imagerating'
 import Questionnaire from './components/Questionnaire'
 import SoundCalibration from './components/SoundCalibration'
@@ -60,8 +61,6 @@ const App = () => {
   }
 
   const generateContent = () => {
-    console.log("current progress: " + progress)
-
     switch (progress) {
       case 0:
         return <Start startStudy={startStudy}/>
@@ -81,14 +80,16 @@ const App = () => {
         }
         break;
       case 4:
-        return <Imagerating audiofile={audiofile} submitData={submitData} />
-      case 5: 
+        return <Tutorial submitData={submitData}/>
+      case 5:
+        return <Imagerating audiofile={audiofile} submitData={submitData}/>
+      case 6: 
         return <Questionnaire surveyJson={sam} submitData={submitData} questionId="sam" />
-      case 6:
-        return <Questionnaire surveyJson={imi} submitData={submitData} questionId="imi" />
       case 7:
-        return <Questionnaire surveyJson={pei} submitData={submitData} questionId="pei" />
+        return <Questionnaire surveyJson={imi} submitData={submitData} questionId="imi" />
       case 8:
+        return <Questionnaire surveyJson={pei} submitData={submitData} questionId="pei" />
+      case 9:
         return <Endcard />
 
     }

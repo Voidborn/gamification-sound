@@ -72,14 +72,11 @@ const Imagegrid = (props: IProps) => {
         props.addPoints(pointSum);
         startAnimations();
 
-        console.log()
-
         setTimeout(async () => {
-            getNextImage();
-            endAnimations();
             await props.submitData(imageName, answer);
-        },2000)
-
+            endAnimations();
+            getNextImage();
+        },1800)
     }
 
     const markImage = (index: number): void => {

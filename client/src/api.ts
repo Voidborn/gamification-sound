@@ -94,7 +94,6 @@ export async function fetchHistory(): Promise<number[]>{
         .then(response => response.json())
         .then(response => {
             let res: history[] = response;
-            console.log(res);
             try {
                 res.sort(
                     function (a:any, b:any) {
