@@ -8,6 +8,10 @@ import Questionnaire from './components/Questionnaire'
 import SoundCalibration from './components/SoundCalibration'
 import Footer from './components/Footer'
 import Endcard from './components/Endcard'
+import PopoutScreen from './components/PopoutScreen'
+
+import DataProtectionText from './components/DataProtectionText';
+import ImprintText from './components/ImprintText';
 
 import demographics from './questionnairesJSON/demographics'
 import music from './questionnairesJSON/music'
@@ -18,12 +22,15 @@ import sam from './questionnairesJSON/sam'
 import { Response } from './interfaces/interfaces';
 import { fetchUserInfo, submitResponse, fetchAudiofile } from './api';
 
+
 const App = () => {
   const [progress, setProgress] = useState(0);
   const [audiofile, setAudiofile] = useState("");
   const [imageProgress, setImageProgress] = useState([0, 0]); // [0]: current , [1]: total
   const [loading, setLoading] = useState(true);
 
+  const [imprintOpen, setImprint] = useState(false);
+  const [dataProtectionOpen, setDataProtection] = useState(false);
 
   const startStudy = async () => {
     let user = await fetchUserInfo();
@@ -31,6 +38,26 @@ const App = () => {
     setAudiofile(await fetchAudiofile());
     setImageProgress([user.currentImage, user.totalImages]);
     setLoading(false);
+  }
+
+  const toggleImprint = () => {
+    if (imprintOpen) {
+      setImprint(false);
+    }
+    else {
+      setImprint(true);
+      setDataProtection(false);
+    }
+  }
+
+  const toggleDataprotection = () => {
+    if (dataProtectionOpen) {
+      setDataProtection(false);
+    }
+    else {
+      setDataProtection(true);
+      setImprint(false);
+    }
   }
 
   const submitData = async (questionId: string, answer: string) => {
@@ -97,8 +124,26 @@ const App = () => {
 
   return (
     <div className="App">
+      {dataProtectionOpen ?
+        <PopoutScreen
+          toggle={toggleDataprotection}
+          title={"Data Protection"}
+          text={<DataProtectionText />}
+      /> : null}
+      {imprintOpen ?
+        <PopoutScreen
+          toggle={toggleImprint}
+          title={"Imprint"}
+          text={<ImprintText />}
+        /> : null}
       {generateContent()}
-      {<Footer total={8} current={progress} imageProgress={imageProgress}/>}
+      <Footer
+        total={8}
+        current={progress}
+        imageProgress={imageProgress}
+        imprint={toggleImprint}
+        dataProt={toggleDataprotection}
+      />
     </div>
   );
   
