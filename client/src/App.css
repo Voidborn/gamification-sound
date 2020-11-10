@@ -23,13 +23,18 @@ h1 {
   font-weight: bold;
 }
 
-.App{
-  margin-bottom: 150px;
+.smalltext {
+  font-size: small;
+  margin:5px;
+  
 }
 
-.smalltext {
-  font-size: x-small;
-  margin:5px;
+.clickable{
+  cursor: pointer;
+}
+
+.clickable:hover{
+  color: darkslateblue;
 }
 
 .flexrow {

@@ -16,6 +16,10 @@ const Imagegrid = (props: IProps) => {
     const [points, setPoints] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     const [marked, setMarked] = useState([false,false,false,false,false,false,false,false,false,false,false,false])
     const [imageLoaded, setImageLoaded] = useState(false);
+
+    const [buttonClickable, setClickable] = useState(true);
+
+    const [error, setError] = useState(false);
     
     //animation class variables:
     const [numberAnim, setNumberAnim] = useState("");
@@ -49,12 +53,21 @@ const Imagegrid = (props: IProps) => {
     }
 
     const confirmImage = async () => {
+        setClickable(false);
+        let markedCount = 0;
         let pointSum = 0;
         points.forEach((p, index) => {
             if (marked[index]) {
                 pointSum += p;
+                markedCount++;
             }
         })
+
+        if (markedCount == 0) {
+            setError(true);
+            setClickable(true);
+            return;
+        }
 
         pointSum = Math.max(pointSum, 0);
 
@@ -75,7 +88,8 @@ const Imagegrid = (props: IProps) => {
         setTimeout(async () => {
             await props.submitData(imageName, answer);
             endAnimations();
-            getNextImage();
+            await getNextImage();
+            setClickable(true);
         },1800)
     }
 
@@ -83,7 +97,7 @@ const Imagegrid = (props: IProps) => {
         let newMarked = marked.slice();
         
         newMarked[index] = !newMarked[index];
-        
+        setError(false);
         setMarked(newMarked);
     }
 
@@ -136,12 +150,12 @@ const Imagegrid = (props: IProps) => {
                     alt="trafficsign" />
 
             </div>
-            
             <p className="smalltext" style={{textAlign:"center", color:"white"}}>{imageName}</p>
-            <div className="image-container">
+            <div>
                 <button
-                    className="btn" onClick={(event) => {confirmImage()}}>
+                    className="btn" onClick={(event) => { if (buttonClickable) { confirmImage() } }}>
                     <p className="btnlabel">NEXT IMAGE</p>
+                    {error?<b style={{color:"darkred", fontSize:"x-large"}}>Select at least one cell!</b>: null}
                 </button>
             </div>
 

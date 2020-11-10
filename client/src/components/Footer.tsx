@@ -9,10 +9,10 @@ const Footer = (props: { total: number, current: number, imageProgress: number[]
             <p className="progress-text">Step {props.current} of {props.total}</p> 
             <Progressbar total={props.total + props.imageProgress[1]} current={props.current + props.imageProgress[0]} />
             <div className="flexrow">
-                <h1 className="smalltext" style={{cursor:"pointer"}} onClick={()=> props.imprint()}>Imprint</h1>
-                <h1 className="smalltext" style={{cursor:"pointer"}} onClick={()=> props.dataProt()}>Data protection</h1>
+                <h1 className="smalltext clickable" onClick={() => props.imprint()}>Imprint</h1>
+                <h1 style={{width:"20px"}}></h1>
+                <h1 className="smalltext clickable" onClick={() => props.dataProt()}>Data protection</h1>
             </div>
-            <p></p>
         </div>
     )
 }

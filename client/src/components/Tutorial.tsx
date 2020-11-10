@@ -3,17 +3,6 @@ import tutorial1 from '../img/Tutorial01.gif';
 import tutorial2 from '../img/Tutorial02.gif';
 
 const Tutorial = (props: { submitData(arg0: string, arg1: any): void }) => {
-    const [tutorialProgress, setTutorialProgress] = useState(0);
-
-    const continueFunction = () => {
-        if (tutorialProgress >= 1) {
-            props.submitData("tutorial", "completed");
-        } else {
-            const a = tutorialProgress + 1; 
-            setTutorialProgress(a);
-        }
-    }
-
     return (
         <div className="flexcol">
             <div className="flexrow">
@@ -49,7 +38,7 @@ const Tutorial = (props: { submitData(arg0: string, arg1: any): void }) => {
                 <button 
                     className="btn" 
                     onClick={
-                        (event) => {continueFunction()}
+                        (event) => {props.submitData("tutorial", "completed")}
                     }>
                     <p className="btnlabel">CONTINUE</p>
                 </button>

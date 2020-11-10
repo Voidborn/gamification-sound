@@ -90,7 +90,7 @@ const App = () => {
   const generateContent = () => {
     switch (progress) {
       case 0:
-        return <Start startStudy={startStudy}/>
+        return <Start startStudy={startStudy} toggleDataprot={toggleDataprotection}/>
       case 1:
         return <Questionnaire surveyJson={demographics} submitData={submitData} questionId="demographics"/>
       case 2:
@@ -124,10 +124,11 @@ const App = () => {
 
   return (
     <div className="App">
+
       {dataProtectionOpen ?
         <PopoutScreen
           toggle={toggleDataprotection}
-          title={"Data Protection"}
+          title={"Data protection"}
           text={<DataProtectionText />}
       /> : null}
       {imprintOpen ?
@@ -136,14 +137,17 @@ const App = () => {
           title={"Imprint"}
           text={<ImprintText />}
         /> : null}
+      
       {generateContent()}
+      
       <Footer
-        total={8}
+        total={9}
         current={progress}
         imageProgress={imageProgress}
         imprint={toggleImprint}
         dataProt={toggleDataprotection}
       />
+
     </div>
   );
   

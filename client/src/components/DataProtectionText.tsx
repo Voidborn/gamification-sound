@@ -2,7 +2,7 @@ import React from "react"
 
 const DataProtectionText = () => {
     return (
-        <div style={{maxHeight:"65vh", overflow:"auto"}}>
+        <div style={{maxHeight:"65vh", overflow:"auto", paddingRight:"30px", textAlign:"justify"}}>
         <h4>General information</h4>
             <p>The following study is part of a thesis at the German Research Center for Artificial Intelligence (DFKI).</p>
 

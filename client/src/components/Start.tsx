@@ -3,7 +3,8 @@ import { register} from '../api'
 import { getToken } from '../cookieManager';
 
 interface IProps {
-   startStudy():void
+    startStudy(): void,
+    toggleDataprot(): void
 }
 
 interface IState {
@@ -32,31 +33,31 @@ const Start = (props: IProps) => {
       }
     
     return (
-        <div className="flexcol">
+        <div className="flexcol" style={{marginBottom: "150px"}}>
             <div className="textbubble flexcol">
                 <div className="bubblecontent">
                     <h2>Participant Information:</h2>
-                    <p>
+                    <p style={{textAlign:"justify"}}>
                         This survey is part of ongoing research on sound effects in gamified applications. 
                         You will be asked to complete several tasks and fill out questionnaires. 
                         Filling out this survey will take about 10 minutes. <br/>
                         Your data will be stored and processed anonymously. 
                         The survey is carried out by Vladislav Hnatovskiy as part of a Master thesis at DFKI (German Research Center for Artificial Intelligence). 
                         The thesis is advised by Maximilian Altmeyer. 
-                        If you have any questions or remarks, contact us at maximilian.altmeyer(at)dfki.de. 
+                        If you have any questions or remarks, contact us at <a href="maximilian.altmeyer@dfki.de">maximilian.altmeyer@dfki.de</a>. 
                         We thank you for your time and participation.
                     </p>
 
                     <label style={(!dataProtection&&error)?{fontWeight: "bold", color:"red" }:{}}>
                         <input style={{ marginRight: "10px"}} type="checkbox" defaultChecked={dataProtection} onChange={(e) => setDataProtection(!dataProtection)} />
-                        I have read and understood the information on data prodection and the participation information and agree that my data may be used anonymously for scientific research purposes.
+                        I have read and understood the information on <b style={{color:"blue",cursor:"pointer"}}onClick={()=>props.toggleDataprot()}>data prodection</b> and the participant information and agree that my data may be used anonymously for scientific research purposes.
                     </label>
                     <br />
                     <br/>
-                    <p>
+                    <p style={{textAlign:"justify"}}>
                         To complete this study you require a working audio output, such as headphones or speakers.
                         <br />
-                        Please make sure to turn off any other audio sources (such as music, podcasts or videos) while completing the survey.
+                        Please make sure to <b>turn off any other audio sources</b> (such as music, podcasts or videos) while completing the survey.
                     </p>
 
                     <label style={(!audioCheck && error)?{fontWeight: "bold", color:"red" }:{}}>

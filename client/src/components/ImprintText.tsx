@@ -2,7 +2,7 @@ import React from "react";
 
 const ImprintText = () => {
     return (
-        <div style={{maxHeight:"65vh", overflow:"auto"}}>
+        <div style={{maxHeight:"65vh", overflow:"auto", paddingRight:"30px", textAlign:"justify"}}>
             Deutsches Forschungszentrum für Künstliche Intelligenz GmbH, DFKI<br/>
             (German Research Center for Artificial Intelligence)<br/><br/>
 

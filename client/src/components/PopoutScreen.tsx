@@ -5,7 +5,7 @@ const PopoutScreen = (props:{toggle():void, title:string, text:JSX.Element}) => 
         <div className="flexcol">
             <div className="textbubble flexcol">
                 <div className="bubblecontent">
-                    <h2>{props.title}</h2>
+                    <h2 style={{textAlign: "center"}}>{props.title}</h2>
                     {props.text}
                 </div>
             </div>
