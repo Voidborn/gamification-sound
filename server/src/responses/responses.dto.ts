@@ -6,5 +6,5 @@ export class ResponseDTO {
     @IsString()
     questionId: string;
 
-    answer: string;
+    answer: any;
 }

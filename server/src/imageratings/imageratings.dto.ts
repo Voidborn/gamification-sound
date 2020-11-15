@@ -1,6 +1,8 @@
 export interface ImageratingsDTO {
     userId: string,
     imageId: string,
-    ratingsArray: string,
-    receivedPoints: number
+    markedArray: string,
+    pointsArray: string,
+    receivedPoints: number,
+    responseTime?: Date
 }

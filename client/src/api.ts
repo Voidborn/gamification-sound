@@ -77,7 +77,6 @@ export async function fetchAudiofile(): Promise<string>{
 
 
 export async function fetchHistory(): Promise<number[]>{
-
     interface history {
         points: number,
         timestamp: number

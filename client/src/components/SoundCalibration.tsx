@@ -24,7 +24,7 @@ const SoundCalibration = (props: {submitData(arg0:string,arg1:any): void}) => {
                 <div
                     className="bubblecontent"
                     style={{ marginBottom: "10px" }}>
-                    <p>Listen to the following six numbers:</p>
+                    <p>Listen to the following <b>6 numbers</b> by clicking on the play button below:</p>
                 </div>
                 <Audioplayer sound="CalibrationV2.mp3" />
                 <div
@@ -36,10 +36,10 @@ const SoundCalibration = (props: {submitData(arg0:string,arg1:any): void}) => {
                         The first number should not be too loud and the last number should still be hearable.
                     </p>
                 </div>
-                Please enter the number here:
+                Please enter the numbers here:
                 <input 
-                type="number" 
-                value={calibrationNumber} 
+                    type="number" 
+                    value={calibrationNumber} 
                 onChange={e => setCalibrationNumber(e.target.value)}
                 />
                 <p style={{ color: "darkred", fontWeight:"bold"}}>{badInput}</p>

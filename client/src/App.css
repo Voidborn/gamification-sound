@@ -264,6 +264,7 @@ h1 {
   text-align:center;
   pointer-events: none;
   margin:3vh;
+  margin-left:1.1vh;
   color:white;
   font-weight: bolder;
   font-size: 5vh;
@@ -278,7 +279,7 @@ h1 {
 }
 
 @keyframes cellNumKeyframes{
-  10% {opacity: 1; font-size:7vh; margin:1.5vh;}
+  10% {opacity: 1; font-size:7vh; margin-left:0vh; margin-top:2vh;}
   100% {opacity: 1;}
 }
 

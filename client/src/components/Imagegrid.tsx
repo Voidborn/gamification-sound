@@ -94,6 +94,7 @@ const Imagegrid = (props: IProps) => {
     }
 
     const markImage = (index: number): void => {
+        if (!buttonClickable) return;
         let newMarked = marked.slice();
         
         newMarked[index] = !newMarked[index];
@@ -115,9 +116,9 @@ const Imagegrid = (props: IProps) => {
             <div className="textbubble flexcol">
                 <div className="bubblecontent" style={{marginBottom:"10px"}}>
                     <p style={{textAlign:"center"}}>
-                        Please select all squares which contain <b>traffic signs</b> or <b>parts of traffic signs</b>.
+                        Please mark all squares which contain <b>traffic signs</b> or <b>parts of traffic signs</b>.
                         <br />
-                        <i>Do not select traffic lights or other types of signs!</i>
+                        <i>Do not mark traffic lights or other types of signs!</i>
                     </p>
                 </div>
             </div>
@@ -133,7 +134,7 @@ const Imagegrid = (props: IProps) => {
                             >
                                 <p
                                     className={`pointCell ${marked[index] ? numberAnim : ""}`}
-                                    style={(i<0)?{color:"darkred"}:{color:"darkslateblue"}}>{i}</p>
+                                    style={(i<0)?{color:"darkred"}:{color:"darkslateblue"}}>{(i>=0)?"+"+i:i}</p>
                                 <img
                                     className={`cell ${marked[index]?"":cellAnim}`}
                                     src={marked[index] ? "img/selected-cell.svg" : "img/unselected-cell.svg"}

@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column } from 'typeorm';
+import { Entity, PrimaryColumn, Column, CreateDateColumn } from 'typeorm';
 
 @Entity()
 export class ImageratingEntity {
@@ -9,8 +9,14 @@ export class ImageratingEntity {
     imageId: string;
 
     @Column('varchar')
-    ratingsArray: string;
+    markedArray: string;
+
+    @Column('varchar')
+    pointsArray: string;
 
     @Column('int')
     receivedPoints: number;
+
+    @CreateDateColumn()
+    responseTime: Date;
 }
