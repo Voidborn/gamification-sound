@@ -10,6 +10,8 @@ import imgJson from '../jsonFiles/images.json';
 import progressStates from '../jsonFiles/progressStates.json'
 import soundJson from '../jsonFiles/sounds.json';
 import { promises } from 'fs';
+import { group } from 'console';
+import { ignoreElements } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -25,7 +27,26 @@ export class UserService {
     async register(prolificId: string) {
         //set the amount of test groups
         var test_groups = soundJson.sounds.length + 1;
-        var testgroup = Math.floor(Math.random() * Math.floor(test_groups));
+
+        let groupDistribuition: number[] = [];
+        for (var i = 0; i < test_groups; i++) {
+            groupDistribuition.push(0);
+        }
+
+        //find lowest participant test group
+        let allUsers = await this.userRepository.find();
+        for (var i = 0; i < allUsers.length; i++) {
+            ++groupDistribuition[allUsers[i].testgroup];
+        }
+
+        let lowestPair: { group: number, participants: number } = { group: 0, participants: Number.MAX_VALUE };
+        for (var i = 0; i < test_groups; i++) {
+            if (groupDistribuition[i] < lowestPair.participants) {
+                lowestPair = { group: i, participants: groupDistribuition[i] }
+            }
+        }
+
+        console.log(lowestPair);
 
         //create array with a number for each present image
         var myArray: number[] = [];
@@ -47,7 +68,7 @@ export class UserService {
         //set new user Data
         var userData: UserDTO = {
             prolificId: prolificId,
-            testgroup: testgroup,
+            testgroup: lowestPair.group,
             studyProgress: progressStates.demographics,
             imageOrder: imageOrder,
             currentImage: 0
