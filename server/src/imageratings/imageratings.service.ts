@@ -12,11 +12,12 @@ export class ImageratingsService {
         private imageratingRepository: Repository<ImageratingEntity>,
     ) { }
 
-    async create(userId: string, imageId: string, markedArray: boolean[], pointsArray: number[], receivedPoints: number) {
+    async create(userId: string, imageId: string, testgroup: number, markedArray: boolean[], pointsArray: number[], receivedPoints: number) {
 
         let entry = {
             userId: userId,
             imageId: imageId,
+            testgroup: testgroup,
             markedArray: JSON.stringify(markedArray),
             pointsArray: JSON.stringify(pointsArray),
             receivedPoints: receivedPoints

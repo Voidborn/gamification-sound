@@ -8,6 +8,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { ResponsesModule } from './responses/responses.module';
 import { ImageratingsModule } from './imageratings/imageratings.module';
+import { QuestionnairesModule } from './questionnaires/questionnaires.module';
 import { HttpErrorFilter } from './shared/http-error.filter';
 import { LoggingInterceptor } from './shared/logging.interceptor';
 
@@ -18,7 +19,8 @@ import { LoggingInterceptor } from './shared/logging.interceptor';
     TypeOrmModule.forRoot(),
     UserModule,
     ResponsesModule,
-    ImageratingsModule],
+    ImageratingsModule,
+    QuestionnairesModule],
   controllers: [AppController],
   providers: [
     AppService,

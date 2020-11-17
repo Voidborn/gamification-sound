@@ -8,6 +8,9 @@ export class ImageratingEntity {
     @PrimaryColumn('varchar')
     imageId: string;
 
+    @Column('int')
+    testgroup: number;
+
     @Column('varchar')
     markedArray: string;
 

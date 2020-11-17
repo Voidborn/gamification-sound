@@ -114,7 +114,7 @@ var data =
            },
            {
             "type": "rating",
-            "name": "IMI14",
+            "name": "IMI13",
             "title": "I was anxious while marking traffic signs.",
             "isRequired": true,
             "rateMax": 7,
@@ -123,7 +123,7 @@ var data =
            },
            {
             "type": "rating",
-            "name": "question3",
+            "name": "IMI14",
             "title": "I thought marking traffic signs was very boring.",
             "isRequired": true,
             "rateMax": 7,

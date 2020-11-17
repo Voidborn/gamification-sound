@@ -5,12 +5,12 @@ var data = {
       "elements": [
        {
         "type": "radiogroup",
-        "name": "question1",
+        "name": "turnoff",
         "title": "Did you turn off the volume during the experiment?",
         "isRequired": true,
         "choices": [
          {
-          "value": "item1",
+          "value": "No",
           "text": "No"
          }
         ],
