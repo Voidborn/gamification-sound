@@ -2,8 +2,8 @@
   "type": "mysql",
   "host": "localhost",
   "port": 3306,
-  "username": "root",
-  "password": null,
+  "username": "backend",
+  "password": "!amTheB4ckend",
   "database": "gamification_audio",
   "entities": [
     "./dist/**/*.entity{.ts,.js}"

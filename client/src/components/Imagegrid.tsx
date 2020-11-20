@@ -63,7 +63,7 @@ const Imagegrid = (props: IProps) => {
             }
         })
 
-        if (markedCount == 0) {
+        if (markedCount === 0) {
             setError(true);
             setClickable(true);
             return;

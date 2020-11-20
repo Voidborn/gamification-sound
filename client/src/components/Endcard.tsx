@@ -12,8 +12,8 @@ const Endcard = () => {
               <a href="maximilian.altmeyer@dfki.de">maximilian.altmeyer@dfki.de</a>.
             </p>
           </div>              
-            </div>
-            </div>
+        </div>
+        </div>
     )
 }
 

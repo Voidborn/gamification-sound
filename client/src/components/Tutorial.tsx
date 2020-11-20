@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import tutorial1 from '../img/Tutorial01.gif';
 import tutorial2 from '../img/Tutorial02.gif';
 
