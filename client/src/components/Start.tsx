@@ -19,7 +19,7 @@ const Start = (props: IProps) => {
 
     useEffect(() => {
         let token = getToken();
-        if (token && token !== "") {
+        if (token && token !== "" && token !== undefined) {
             props.startStudy();
         }
     })

@@ -87,8 +87,8 @@ const Imagegrid = (props: IProps) => {
 
         setTimeout(async () => {
             await props.submitData(imageName, answer);
-            endAnimations();
             await getNextImage();
+            endAnimations();
             setClickable(true);
         },1800)
     }

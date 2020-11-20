@@ -30,8 +30,8 @@ export class QuestionnairesEntity {
     @Column('int')
     musician: number;
 
-    @Column('int')
-    genres: string[];
+    @Column('varchar')
+    genres: string;
 
     //SAM:
     @Column('varchar')

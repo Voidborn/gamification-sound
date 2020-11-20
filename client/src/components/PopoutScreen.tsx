@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PopoutScreen = (props:{toggle():void, title:string, text:JSX.Element}) => {
+const PopoutScreen = (props:{toggle():void, title:string, text:JSX.Element, secondaryOnClick?():void, secondaryButtonText?:string}) => {
     return <div className="popoutScreen">
         <div className="flexcol">
             <div className="textbubble flexcol">
@@ -10,13 +10,27 @@ const PopoutScreen = (props:{toggle():void, title:string, text:JSX.Element}) => 
                 </div>
             </div>
             <div className="grid-col">
-                <button 
-                    className="btn" 
-                    onClick={
-                        (event) => {props.toggle() }
-                    }>
-                        <p className="btnlabel">CLOSE</p>
-                </button>
+                <div className="grid-row">
+                    {props.secondaryOnClick ?
+                        <button
+                            className="btn"
+                            onClick={(event) => {
+                                if (props.secondaryOnClick) {
+                                props.secondaryOnClick()
+                                }
+                            }}>
+                            <p className="btnlabel">{props.secondaryButtonText}</p>
+                        </button>
+                        : null
+                    }
+                    <button 
+                        className="btn" 
+                        onClick={
+                            (event) => {props.toggle() }
+                        }>
+                            <p className="btnlabel">CLOSE</p>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

@@ -145,6 +145,7 @@ export class ResponsesService {
                     entry.musician = answer.musician;
                     entry.musicTheory = answer.musicTheory;
                     entry.musicEnjoyment = answer.musicEnjoyment;
+                    entry.genres = answer.genres;
                     break;
                 default: break;
             }

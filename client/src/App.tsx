@@ -20,7 +20,7 @@ import pei from './questionnairesJSON/pei'
 import sam from './questionnairesJSON/sam'
 
 import { Response } from './interfaces/interfaces';
-import { fetchUserInfo, submitResponse, fetchAudiofile } from './api';
+import { fetchUserInfo, submitResponse, fetchAudiofile, wipeToken } from './api';
 
 
 const App = () => {
@@ -32,12 +32,25 @@ const App = () => {
   const [imprintOpen, setImprint] = useState(false);
   const [dataProtectionOpen, setDataProtection] = useState(false);
 
+  const [corruptUser, setCorruptUser] = useState(false);
+
+  const wipeProgress = () => {
+    wipeToken();
+    window.location.reload();
+  }
+
   const startStudy = async () => {
-    let user = await fetchUserInfo();
-    setProgress(user.studyProgress);
-    setAudiofile(await fetchAudiofile());
-    setImageProgress([user.currentImage, user.totalImages]);
-    setLoading(false);
+    var user = await fetchUserInfo();
+    if (user.studyProgress !== -1) {
+      setCorruptUser(false);
+      setProgress(user.studyProgress);
+      setAudiofile(await fetchAudiofile());
+      setImageProgress([user.currentImage, user.totalImages]);
+      setLoading(false);
+    } else {
+      setCorruptUser(true);
+    }
+
   }
 
   const toggleImprint = () => {
@@ -68,7 +81,6 @@ const App = () => {
       answer: answer
     }
     let submissionSuccess = await submitResponse(response);
-    console.log(submissionSuccess);
     if (!submissionSuccess) {
       console.error("Answer submission failed!");
     }
@@ -76,7 +88,7 @@ const App = () => {
     // pulls new User Info after trying to submit data,
     // to check whether the study has progressed
     let newUserInfo = await fetchUserInfo();
-    console.log(newUserInfo);
+    //console.log(newUserInfo);
     if (newUserInfo.studyProgress !== progress) {
       setProgress(newUserInfo.studyProgress)
     }
@@ -137,7 +149,27 @@ const App = () => {
           title={"Imprint"}
           text={<ImprintText />}
         /> : null}
+      {corruptUser ?
+        <PopoutScreen
+          toggle={() => {
+            setCorruptUser(false);
+          }}
+          title={"Oops! :("}
+          text={
+            <p style={{ textAlign: "center" }}>
+              It seems that something went wrong while trying to load your study progress.
+              <br />
+              Try refreshing the page. If this doesn't help, try registering as a new user.
+              <br />
+              <br />
+              Sorry for the inconvenience.
+            </p>
+          }
+          secondaryButtonText="Register as new user"
+          secondaryOnClick={wipeProgress}
+        /> : null}
       
+
       {generateContent()}
       
       <Footer

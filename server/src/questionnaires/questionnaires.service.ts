@@ -45,7 +45,7 @@ export class QuestionnairesService {
             musicTheory: args.musicTheory,
             instrument: args.instrument,
             musician: args.musician,
-            genres: args.genres,
+            genres: JSON.stringify(args.genres),
             turnoff: args.turnoff,
             valence: args.valence,
             arousal: args.arousal,

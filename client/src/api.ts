@@ -1,7 +1,7 @@
 import {getToken, setToken, resetCookies} from './cookieManager'
 import {Image, Response} from './interfaces/interfaces'
 
-const baseUrl = "http://localhost:8080/";
+const baseUrl = "http://116.202.103.30:8080/" //"http://localhost:8080/"; //
 
 
 export async function register(prolific?: string): Promise<string>{
@@ -49,12 +49,22 @@ export async function fetchUserInfo(): Promise<{
         .then(response => {
             return response
         })
-    return {
-        studyProgress: user.studyProgress,
-        //Reads how many images total need to be rated...
-        totalImages: JSON.parse(user.imageOrder).array.length,
-        //...and how many have been rated. Since the current Image is the array index, we have to increment!
-        currentImage: user.currentImage + 1
+        .catch(() => {
+            console.error("Error while fetching user! Corrupt token? -> Try erasing cookies!");
+            return null;
+        })
+
+    if (!user.userId) {
+        return {studyProgress: -1, totalImages: -1, currentImage: -1};
+    } else {
+        return {
+            studyProgress: user.studyProgress,
+            //Reads how many images total need to be rated...
+            totalImages: JSON.parse(user.imageOrder).array.length,
+            //...and how many have been rated. Since the current Image is the array index, we have to increment!
+            currentImage: user.currentImage + 1
+        }
+
     };
 }
 
@@ -110,7 +120,7 @@ export async function fetchHistory(): Promise<number[]>{
 }
 
 export async function submitResponse(data: Response) {
-    console.log("wants to submit", JSON.stringify(data));
+    //console.log("wants to submit", JSON.stringify(data));
     let submitSuccessful = await fetch(
         baseUrl + "response",
         {
@@ -154,4 +164,8 @@ export function getImageUrl(name: string):string{
 
 export function getSoundUrl(name: string):string{
     return baseUrl + "sound/" + name;
+}
+
+export function wipeToken() {
+    setToken("");
 }
