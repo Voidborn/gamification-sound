@@ -130,13 +130,11 @@ const App = () => {
         return <Questionnaire surveyJson={pei} submitData={submitData} questionId="pei" />
       case 9:
         return <Endcard />
-
     }
   }
 
   return (
     <div className="App">
-
       {dataProtectionOpen ?
         <PopoutScreen
           toggle={toggleDataprotection}
@@ -168,8 +166,6 @@ const App = () => {
           secondaryButtonText="Register as new user"
           secondaryOnClick={wipeProgress}
         /> : null}
-      
-
       {generateContent()}
       
       <Footer
@@ -179,10 +175,8 @@ const App = () => {
         imprint={toggleImprint}
         dataProt={toggleDataprotection}
       />
-
     </div>
   );
-  
 }
 
 export default App;

@@ -44,7 +44,7 @@ const Start = (props: IProps) => {
                         Your data will be stored and processed anonymously. 
                         The survey is carried out by Vladislav Hnatovskiy as part of a Master thesis at DFKI (German Research Center for Artificial Intelligence). 
                         The thesis is advised by Maximilian Altmeyer. 
-                        If you have any questions or remarks, contact us at <a href="maximilian.altmeyer@dfki.de">maximilian.altmeyer@dfki.de</a>. 
+                        If you have any questions or remarks, contact us at <a href="s9vlhnat@stud.uni-saarland.de">s9vlhnat@stud.uni-saarland.de</a> or <a href="maximilian.altmeyer@dfki.de">maximilian.altmeyer@dfki.de</a>. 
                         We thank you for your time and participation.
                     </p>
 
