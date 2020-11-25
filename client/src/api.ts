@@ -1,7 +1,7 @@
 import {getToken, setToken, resetCookies} from './cookieManager'
 import {Image, Response} from './interfaces/interfaces'
 
-const baseUrl = "http://116.202.103.30:8080/" //"http://localhost:8080/"; //
+const baseUrl = "https://api.gamification-sound-study.ga/" //"http://localhost:8080/"; //
 
 
 export async function register(prolific?: string): Promise<string>{
