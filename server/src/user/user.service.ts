@@ -28,25 +28,31 @@ export class UserService {
         //set the amount of test groups
         var test_groups = soundJson.sounds.length + 1;
 
-        let groupDistribuition: number[] = [];
+        let groupDistribution: number[] = [];
         for (var i = 0; i < test_groups; i++) {
-            groupDistribuition.push(0);
+            groupDistribution.push(0);
         }
 
         //find lowest participant test group
-        let allUsers = await this.userRepository.find();
+        let allUsers = await this.userRepository.find({ where: { studyProgress: progressStates.finished } });
         for (var i = 0; i < allUsers.length; i++) {
-            ++groupDistribuition[allUsers[i].testgroup];
+            ++groupDistribution[allUsers[i].testgroup];
         }
 
-        let lowestPair: { group: number, participants: number } = { group: 0, participants: Number.MAX_VALUE };
+        let lowestGroups: number[] = [];
+        let lowestParticipantThreshold = Number.MAX_VALUE;
         for (var i = 0; i < test_groups; i++) {
-            if (groupDistribuition[i] < lowestPair.participants) {
-                lowestPair = { group: i, participants: groupDistribuition[i] }
+            if (groupDistribution[i] < lowestParticipantThreshold) {
+                lowestParticipantThreshold = groupDistribution[i];
             }
         }
-
-        console.log(lowestPair);
+        for (var i = 0; i < test_groups; i++) {
+            if (groupDistribution[i] < lowestParticipantThreshold) {
+                lowestGroups.push(i);
+            }
+        }
+        let testgroup = Math.floor(Math.random() * test_groups);
+        console.log("group algorithm:", groupDistribution, lowestGroups, testgroup);
 
         //create array with a number for each present image
         var myArray: number[] = [];
@@ -68,7 +74,7 @@ export class UserService {
         //set new user Data
         var userData: UserDTO = {
             prolificId: prolificId,
-            testgroup: lowestPair.group,
+            testgroup: testgroup,
             studyProgress: progressStates.demographics,
             imageOrder: imageOrder,
             currentImage: 0
