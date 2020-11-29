@@ -6,33 +6,37 @@ const Tutorial = (props: { submitData(arg0: string, arg1: any): void }) => {
     return (
         <div className="flexcol">
             <div className="flexrow">
-            <div className="textbubble flexcol">
-                <div className="bubblecontent" style={{marginBottom:"10px"}}>
-                    <p style={{ textAlign: "center" }}>                         
-                        In the following task, you will be required to <br/><b>mark</b> image parts containing <b>traffic signs</b>:
-                        <br />
-                    </p>
+                <div className="textbubble flexcol">
+                    <div className="bubblecontent" style={{marginBottom:"10px"}}>
+                        <p style={{ textAlign: "center" }}>                         
+                            In the following task, you will be required to <br/><b>mark</b> image parts containing <b>traffic signs</b>:
+                            <br />
+                        </p>
+                    </div>
+                    <div style={{ boxShadow: "0px 0px 5px darkslateblue" }}>
+                        <img src={tutorial1} width="250px" alt="tutorial 1"/>
+                    </div>
+                    <br/>
                 </div>
-                <div style={{ boxShadow: "0px 0px 5px darkslateblue" }}>
-                    <img src={tutorial1} width="250px" alt="tutorial 1"/>
+                <div className="textbubble flexcol">
+                    <div className="bubblecontent" style={{marginBottom:"10px"}}>
+                        <p style={{ textAlign: "center" }}>                         
+                            Marking correct tiles will <b style={{color:"darkslateblue"}}>reward you with points</b>,
+                            <br/>
+                            but marking wrong tiles will <b style={{color:"darkred"}}>subtract points</b>!            
+                        </p>
+                    </div>
+                    <div style={{ boxShadow: "0px 0px 5px darkslateblue" }}>
+                        <img src={tutorial2} width="250px" alt="tutorial 2"/>
+                    </div>
+                    <div className="bubblecontent" style={{marginBottom:"10px"}}>
+                        <p style={{ textAlign: "center" }}>                         
+                        <b style={{color:"darkred"}}>Empty cells, traffic lights</b> or <b style={{color:"darkred"}}>sign posts</b> count negative!             
+                        </p>
+                    </div>
+
                 </div>
-                <br/>
             </div>
-            <div className="textbubble flexcol">
-                <div className="bubblecontent" style={{marginBottom:"10px"}}>
-                    <p style={{ textAlign: "center" }}>                         
-                    Marking correct tiles will reward you with points, <br/>but marking wrong tiles will subtract points!
-                        <br />
-                    </p>
-                </div>
-                <div style={{ boxShadow: "0px 0px 5px darkslateblue" }}>
-                    <img src={tutorial2} width="250px" alt="tutorial 2"/>
-                </div>
-                <br/>
-
-
-                </div>
-                </div>
 
             <div className="grid-col">
                 <button 
