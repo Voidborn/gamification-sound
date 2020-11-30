@@ -6,10 +6,10 @@ const ImprintText = () => {
 
             <h5>E-Mail Contacts</h5>
             Vladislav Hnatovskiy:<br/>
-            <a href="s9vlhnat@stud.uni-saarland.de">s9vlhnat@stud.uni-saarland.de</a>
+            <a href="mailto:s9vlhnat@stud.uni-saarland.de">s9vlhnat@stud.uni-saarland.de</a>
             <br />
             Maximilian Altmeyer:<br/>
-            <a href="maximilian.altmeyer@dfki.de">maximilian.altmeyer@dfki.de</a>
+            <a href="mailto:maximilian.altmeyer@dfki.de">maximilian.altmeyer@dfki.de</a>
 
             <h5>Postal Address</h5>
             Vladislav Hnatovskiy<br/>

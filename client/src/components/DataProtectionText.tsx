@@ -27,7 +27,7 @@ const DataProtectionText = () => {
             </p>
 
             <h4>Contact person</h4>
-            <p>Vladislav Hnatovskiy is responsible for carrying out this study (s9vlhnat@stud.uni-saarland.de). If you have any questions that are not answered in this privacy statement, or if you would like further information on data protection, please contact us.
+            <p>Vladislav Hnatovskiy is responsible for carrying out this study (<a href="mailto:s9vlhnat@stud.uni-saarland.de"></a>s9vlhnat@stud.uni-saarland.de). If you have any questions that are not answered in this privacy statement, or if you would like further information on data protection, please contact us.
             </p>
 
             <h4>Right of Appeal</h4>
