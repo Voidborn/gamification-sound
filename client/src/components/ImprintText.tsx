@@ -7,6 +7,7 @@ const ImprintText = () => {
 
             <h5>E-Mail Contacts</h5>
             <a href="s9vlhnat@stud.uni-saarland.de">s9vlhnat@stud.uni-saarland.de</a>
+            <br/>
             <a href="maximilian.altmeyer@dfki.de">maximilian.altmeyer@dfki.de</a>
 
             <h5>Postal Address</h5>
