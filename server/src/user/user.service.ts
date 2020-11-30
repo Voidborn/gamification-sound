@@ -36,23 +36,24 @@ export class UserService {
         //find lowest participant test group
         let allUsers = await this.userRepository.find({ where: { studyProgress: progressStates.finished } });
         for (var i = 0; i < allUsers.length; i++) {
-            ++groupDistribution[allUsers[i].testgroup];
+            groupDistribution[allUsers[i].testgroup] = groupDistribution[allUsers[i].testgroup] + 1;
         }
 
-        let lowestGroups: number[] = [];
-        let lowestParticipantThreshold = Number.MAX_VALUE;
+        let lowestParticipantThreshold = Number.MAX_SAFE_INTEGER;
         for (var i = 0; i < test_groups; i++) {
             if (groupDistribution[i] < lowestParticipantThreshold) {
                 lowestParticipantThreshold = groupDistribution[i];
             }
         }
+        let lowestGroups: number[] = [];
         for (var i = 0; i < test_groups; i++) {
-            if (groupDistribution[i] = lowestParticipantThreshold) {
+            if (groupDistribution[i] === lowestParticipantThreshold) {
                 lowestGroups.push(i);
             }
         }
-        let testgroup = Math.floor(Math.random() * test_groups);
-        console.log("group algorithm:", groupDistribution, lowestGroups, testgroup);
+        let testgroup = lowestGroups[Math.floor(Math.random() * lowestGroups.length)];
+        console.log("group algorithm:", groupDistribution, lowestParticipantThreshold, lowestGroups, testgroup);
+
 
         //create array with a number for each present image
         var myArray: number[] = [];
