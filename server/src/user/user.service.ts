@@ -47,7 +47,7 @@ export class UserService {
             }
         }
         for (var i = 0; i < test_groups; i++) {
-            if (groupDistribution[i] < lowestParticipantThreshold) {
+            if (groupDistribution[i] = lowestParticipantThreshold) {
                 lowestGroups.push(i);
             }
         }
