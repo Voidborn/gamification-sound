@@ -6,7 +6,7 @@ var data={
        {
         "type": "rating",
         "name": "Immersion1",
-        "title": "I was no longer aware of my surroundings while I was marking traffic signs.",
+        "title": "I was no longer aware of my surroundings while I was marking traffic signs in this application.",
         "isRequired": true,
         "rateMax": 7,
         "minRateDescription": "Not at all true",
@@ -15,7 +15,7 @@ var data={
        {
         "type": "rating",
         "name": "Immersion2",
-        "title": "I was immersed in marking the traffic signs.",
+        "title": "I was immersed in marking the traffic signs in this application.",
         "isRequired": true,
         "rateMax": 7,
         "minRateDescription": "Not at all true",
@@ -24,7 +24,7 @@ var data={
        {
         "type": "rating",
         "name": "Immersion3",
-        "title": "I was fully focused on the marking traffic signs.",
+        "title": "I was fully focused on the marking traffic signs in this application.",
         "isRequired": true,
         "rateMax": 7,
         "minRateDescription": "Not at all true",
@@ -33,7 +33,7 @@ var data={
        {
         "type": "rating",
         "name": "Challenge1",
-        "title": "Marking traffic signs was challenging but not too challenging.",
+        "title": "Marking traffic signs in this application was challenging but not too challenging.",
         "isRequired": true,
         "rateMax": 7,
         "minRateDescription": "Not at all true",
@@ -42,7 +42,7 @@ var data={
        {
         "type": "rating",
         "name": "Challenge2",
-        "title": "Marking traffic signs was not too easy and not too hard to perform.",
+        "title": "Marking traffic signs in this application was not too easy and not too hard to perform.",
         "isRequired": true,
         "rateMax": 7,
         "minRateDescription": "Not at all true",
@@ -51,7 +51,7 @@ var data={
        {
         "type": "rating",
         "name": "Challenge3",
-        "title": "The challenges while marking traffic signs were at the right level of difficulty for me.",
+        "title": "The challenges while marking traffic signs in this application were at the right level of difficulty for me.",
         "isRequired": true,
         "rateMax": 7,
         "minRateDescription": "Not at all true",

@@ -24,7 +24,7 @@ const SoundCalibration = (props: {submitData(arg0:string,arg1:any): void}) => {
                 <div
                     className="bubblecontent"
                     style={{ marginBottom: "10px" }}>
-                    <p>Listen to the following <b>6 numbers</b> by clicking on the play button below:</p>
+                    <p>Listen to the recording by clicking on the play button below. You will hear <b>6 numbers</b>.</p>
                 </div>
                 <Audioplayer sound="CalibrationV2.mp3" />
                 <div
@@ -42,10 +42,13 @@ const SoundCalibration = (props: {submitData(arg0:string,arg1:any): void}) => {
                     value={calibrationNumber} 
                 onChange={e => setCalibrationNumber(e.target.value)}
                 />
-                <p style={{ color: "darkred", fontWeight:"bold"}}>{badInput}</p>
+                <p style={{ color: "darkred", fontWeight: "bold" }}>{badInput}</p>
+                <div
+                    className="bubblecontent"
+                    style={{ marginBottom: "10px" }}>
+                    <p>Please keep the sound on and at the same loudness level throughout the study!</p>
+                </div>
             </div>
-
-            
 
             <button
                 className="btn"

@@ -34,7 +34,7 @@ var data = {
        {
         "type": "rating",
         "name": "Arousal",
-        "title": "Please rate how excited you felt while marking the traffic signs, according to the image below",
+        "title": "Please rate how excited you felt while marking the traffic signs in this application, according to the image below",
         "isRequired": true,
         "rateMax": 9,
         "minRateDescription": "Calm",
