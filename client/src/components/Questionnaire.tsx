@@ -20,7 +20,7 @@ const DemographicsQ = (props: IProps) => {
     }
 
     return (
-        <div className="flexrow surveybox" style={{marginBottom: "150px"}}>
+        <div className="flexrow surveybox" style={{marginBottom: "300px"}}>
             <Survey.Survey
                 json={props.surveyJson}
                 onComplete={sendDataToServer} />
