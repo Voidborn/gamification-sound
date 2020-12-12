@@ -50,7 +50,7 @@ const Start = (props: IProps) => {
 
                     <label style={(!dataProtection&&error)?{fontWeight: "bold", color:"red" }:{}}>
                         <input style={{ marginRight: "10px"}} type="checkbox" defaultChecked={dataProtection} onChange={(e) => setDataProtection(!dataProtection)} />
-                        I have read and understood the information on <b style={{color:"blue",cursor:"pointer"}}onClick={()=>props.toggleDataprot()}>data prodection</b> and the participant information and agree that my data may be used anonymously for scientific research purposes.
+                        I have read and understood the information on <b style={{color:"blue",cursor:"pointer"}}onClick={()=>props.toggleDataprot()}>data protection</b> and the participant information and agree that my data may be used anonymously for scientific research purposes.
                     </label>
                     <br />
                     <br/>
