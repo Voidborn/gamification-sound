@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
+import {isMobileOnly} from 'react-device-detect';
 
 import Start from './components/Start'
 import Tutorial from './components/Tutorial'
@@ -100,6 +101,17 @@ const App = () => {
   }
 
   const generateContent = () => {
+    if (isMobileOnly) {
+      return (
+        <div className="flexcol" style={{ marginBottom: "150px" }}>
+          <div className="textbubble flexcol">
+            <div className="bubblecontent" style={{fontSize: "10vmin", textAlign: "center", fontWeight: "bold"}}>
+                This content is unavailable on mobile. Please open the webpage on a desktop device.
+            </div>
+          </div>
+        </div>
+      )
+    }
     switch (progress) {
       case 0:
         return <Start startStudy={startStudy} toggleDataprot={toggleDataprotection}/>
