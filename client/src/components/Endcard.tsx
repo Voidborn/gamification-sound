@@ -13,16 +13,16 @@ const Endcard = () => {
             </p>
           </div>     
         </div>
-        <button 
-                    className="btn" 
-                    onClick={
-                        (event) => { window.location.replace("https://app.prolific.co/submissions/complete?cc=7ABAD1B8")}
-                    }>
-                    <p className="btnlabel">Return to Prolific</p>
-            </button>
         </div>
     )
 }
 
+/*   <button 
+className="btn" 
+onClick={
+    (event) => { window.location.replace("https://app.prolific.co/submissions/complete?cc=7ABAD1B8")}
+}>
+<p className="btnlabel">Return to Prolific</p>
+</button> */
 
 export default Endcard;

@@ -67,7 +67,8 @@ const Start = (props: IProps) => {
                     <br />
                     <br />
                     <br />
-                    <p style={{ textAlign: "center" }}>
+                    {/*
+                                        <p style={{ textAlign: "center" }}>
                         Please enter your Prolific ID here:
                         <input
                             value={prolificId}
@@ -75,6 +76,10 @@ const Start = (props: IProps) => {
                             onChange={e => setProlificId(e.target.value)}
                         />
                     </p>
+                    
+                    
+                    */}
+
                 </div>
             </div>
             <div>
