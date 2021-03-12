@@ -69,7 +69,7 @@ export class QuestionnairesService {
             imi18: args.imi[17],
             imi19: args.imi[18],
             imi20: args.imi[19],
-            imi21: args.imi[21],
+            imi21: args.imi[20],
             imi22: args.imi[21],
             peiImmersion01: args.pei[0],
             peiImmersion02: args.pei[1],
